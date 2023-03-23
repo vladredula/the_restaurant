@@ -36,7 +36,7 @@
             <div class="d-grid pt-2">
                 <button href="#foodcatlist1" data-bs-toggle="collapse" class="btn btn-danger rounded-0 text-start">Food sub cat 1</button>
             </div>
-            <div class="row py-3 collapse" id="foodcatlist1">
+            <div class="row py-3 collapse show" id="foodcatlist1">
                 <div class="col-sm-6 col-md-4 col-lg-3 py-3">
                     <div class="card rounded-0 bg-dark">
                         <img src="https://www.tgifridays.co.jp/wp/wp-content/uploads/2015/06/Burger-Fridays-Cheeseburger.jpg" class="card-img-top rounded-0" alt="...">
