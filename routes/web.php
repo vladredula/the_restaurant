@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/menu', [App\Http\Controllers\MenuController::class, 'index'])->name('menu');
+Route::get('/food', [App\Http\Controllers\ItemController::class, 'food'])->name('food');
+Route::get('/drink', [App\Http\Controllers\ItemController::class, 'drink'])->name('drink');
