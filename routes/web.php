@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/menu', [App\Http\Controllers\MenuController::class, 'index'])->name('menu');
-Route::get('/food', [App\Http\Controllers\ItemController::class, 'food'])->name('food');
-Route::get('/drink', [App\Http\Controllers\ItemController::class, 'drink'])->name('drink');
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+Route::get('/food', [ItemController::class, 'food'])->name('food');
+Route::get('/drink', [ItemController::class, 'drink'])->name('drink');
