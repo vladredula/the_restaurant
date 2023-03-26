@@ -7,15 +7,15 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-11 col-lg-10 col-xl-9 col-xxl-8">
-            <nav class="nav nav-pills flex-column flex-sm-row navbar-dark bg-dark">
+            <nav class="nav nav-pills flex-column flex-sm-row bg-dark">
             @foreach ($categories as $id => $category)
-                <a class="flex-sm-fill text-center nav-link text-white rounded-0" data-bs-target="#foodCarousel" data-bs-slide-to="{{ $id }}" aria-current=true href="#{{ $category['abbreviation'] }}">{{ $category['name'] }}</a>
+                <a class="flex-sm-fill text-center nav-link text-white rounded-0" data-bs-target="#foodCarousel" data-bs-slide-to="{{ $id }}" {{ (empty($active) && $id == 0 ) ? 'aria-current=true' : '' }} href="#{{ $category['abbreviation'] }}">{{ $category['name'] }}</a>
             @endforeach
             </nav>
             <div id="foodCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    @foreach ($categories as $category)
-                    <div class="carousel-item active">
+                    @foreach ($categories as $id => $category)
+                    <div class="carousel-item {{ (empty($active) && $id == 0 ) ? 'active' : '' }}">
                         <img src="{{ $category['img_url'] }}" class="w-100" alt="{{ $category['abbreviation'] }}" />		
                     </div>
                     @endforeach
@@ -24,7 +24,7 @@
         </div>
     </div>
     @foreach ($categories as $category)
-    <div class="row collapse justify-content-center" id="{{ $category['abbreviation'] }}">
+    <div class="row justify-content-center" id="{{ $category['abbreviation'] }}">
         <div class="col-md-11 col-lg-10 col-xl-9 col-xxl-8">
         @foreach ($items[$category['abbreviation']] as $subcategory => $item)
             @if ($subcategory != 'none')
