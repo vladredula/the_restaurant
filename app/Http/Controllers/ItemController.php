@@ -10,19 +10,11 @@ class ItemController extends Controller
 {
     public function food()
     {
-        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/food');
-    
-        $jsonData = $response->json();
-
-        $data = $this->unmarshal($jsonData['Items']);
-        $data = $this->reconstruct($data);
-
         $category = $this->get_category('F');
 
-        return view('food', [
-            'items' => $data,
-            'categories' => $category
-        ]);
+        $first_cat = reset($category);
+
+        return $this->get_food($first_cat['abbreviation']);
     }
 
     public function get_food($active)
@@ -32,6 +24,8 @@ class ItemController extends Controller
         $jsonData = $response->json();
 
         $items = $this->unmarshal($jsonData['Items']);
+        $items = $this->reconstruct($items);
+
         $categories = $this->get_category('F');
 
         return view('food', compact('items', 'categories', 'active'));
@@ -81,7 +75,6 @@ class ItemController extends Controller
         $new_data = array();
 
         foreach ($data as $item) {
-            $category = '';
             $sub_cat = 'none';
 
             if ($item['subcategory'] != '') {
