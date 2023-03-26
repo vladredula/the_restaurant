@@ -28,10 +28,10 @@
             <div class="d-grid pt-3">
                 <button href="#{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}" data-bs-toggle="collapse" class="btn btn-danger rounded-0 text-start">{{ ($subcategory == 'none' ? $categories[0]['name'] : $subcategory ) }}</button>
             </div>
-            <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}">
+            <div class="row collapse show row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}">
                 @foreach ($item as $food)
                 <div class="col py-3">
-                    <div class="card h-100 border-0 rounded-0 bg-dark" style="min-width: 150px;">
+                    <div class="card h-100 border-0 rounded-0 bg-dark" style="min-width: 180px;">
                         <img src="{{ $food['img_url'] }}" class="card-img-top rounded-0" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-white">{{ $food['name'] }}</h5>
