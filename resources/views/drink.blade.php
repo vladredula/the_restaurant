@@ -13,37 +13,29 @@
             </ul>
             <div id="drinkCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    @foreach ($categories as $id => $category)
-                    <div class="carousel-item {{ (isset($active)) ? (($active == $category['abbreviation']) ? 'active' : '') : (($id == 0) ? 'active' : '' ) }}">
-                        <img src="{{ $category['img_url'] }}" class="w-100" alt="{{ $category['abbreviation'] }}" />		
+                    <div class="carousel-item active">
+                        <img src="https://www.tgifridays.co.jp/wp/wp-content/uploads/2013/07/slide-na1.jpg" class="w-100"/>		
                     </div>
-                    @endforeach
                 </div>
             </div>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-xxl-11">
-        @foreach ($items as $subcategory => $item)
-            <div class="d-grid pt-3">
-                <button href="#{{ $subcategory }}" data-bs-toggle="collapse" class="btn btn-danger rounded-0 text-start">{{ ($subcategory == 'none' ? $categories[0]['name'] : $subcategory ) }}</button>
-            </div>
-            <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="{{ $subcategory }}">
-                @foreach ($item as $drink)
-                <div class="col py-3">
-                    <div class="card h-100 border-0 rounded-0 bg-dark" style="min-width: 150px;">
-                        <img src="{{ $drink['img_url'] }}" class="card-img-top rounded-0" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title text-white">{{ $drink['name'] }}</h5>
-                        </div>
-                        <div class="card-footer">
-                            <p class="card-text text-white">{{ '¥'.$drink['price'] }}</p>
-                        </div>
+            <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-col-xl-3">
+            @foreach ($items as $subcategory => $item)
+                <div class="col" style="min-width: 260px;">
+                    <div class="d-grid pt-3">
+                        <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}" data-bs-toggle="collapse" class="btn btn-danger rounded-0 text-start">{{ ($subcategory == 'none' ? $categories[0]['name'] : $subcategory ) }}</button>
                     </div>
+                    <ul class="list-group rounded-0 collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}">
+                        @foreach ($item as $drink)
+                        <li class="list-group-item bg-dark text-white">{{ $drink['name'] }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                @endforeach
+            @endforeach
             </div>
-        @endforeach
         </div>
     </div>
 </div>
