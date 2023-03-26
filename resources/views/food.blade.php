@@ -2,21 +2,19 @@
 
 @section('content')
 <div class="container">
-    <div class="row pt-2 pb-2">
-        <p>FOOD MENU</p>
-    </div>
     <div class="row justify-content-center">
         <div class="col-md-11 col-lg-10 col-xl-9 col-xxl-8">
-            <nav class="nav nav-pills flex-column flex-sm-row bg-dark">
-
+            <ul class="nav nav-pills nav-fill bg-dark">
             @foreach ($categories as $id => $category)
-                <a class="flex-sm-fill text-center nav-link text-white rounded-0" {{ (empty($active) && $id == 0 ) ? 'aria-current=true' : '' }} href="{{ url('food', ['category' => $category['abbreviation']]) }}">{{ $category['name'] }}</a>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link text-white rounded-0 {{ (isset($active) && $active == $category['abbreviation']) ? 'active' : (!isset($active) && $id == 0 ? 'active' : '') }}" href="{{ url('food', ['category' => $category['abbreviation']]) }}">{{ $category['name'] }}</a>
+                </li>
             @endforeach
-            </nav>
+            </ul>
             <div id="foodCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     @foreach ($categories as $id => $category)
-                    <div class="carousel-item {{ (empty($active) && $id == 0 ) ? 'active' : (($active == $category['abbreviation']) ? 'active' : '') }}">
+                    <div class="carousel-item {{ (isset($active)) ? (($active == $category['abbreviation']) ? 'active' : '') : (($id == 0) ? 'active' : '' ) }}">
                         <img src="{{ $category['img_url'] }}" class="w-100" alt="{{ $category['abbreviation'] }}" />		
                     </div>
                     @endforeach

@@ -10,8 +10,6 @@ class ItemController extends Controller
 {
     public function food()
     {
-        $active = '';
-
         $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/food');
     
         $jsonData = $response->json();
@@ -23,8 +21,7 @@ class ItemController extends Controller
 
         return view('food', [
             'items' => $data,
-            'categories' => $category,
-            'active' => $active
+            'categories' => $category
         ]);
     }
 
