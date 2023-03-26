@@ -31,11 +31,12 @@
             <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="{{ $subcategory }}">
                 @foreach ($item as $food)
                 <div class="col py-3">
-                    <div class="card h-100 rounded-0 bg-dark" style="min-width: 150px;">
+                    <div class="card h-100 border-0 rounded-0 bg-dark" style="min-width: 150px;">
                         <img src="{{ $food['img_url'] }}" class="card-img-top rounded-0" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-white">{{ $food['name'] }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{ $food['tname'] }}</h6>
+                        </div>
+                        <div class="card-footer">
                             <p class="card-text text-white">{{ '¥'.$food['price'] }}</p>
                         </div>
                     </div>
