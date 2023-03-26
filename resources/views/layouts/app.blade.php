@@ -11,6 +11,12 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <style>
+        .nav-pills > li.active{
+            background-color: #dc3545;
+        }
+    </style>
 </head>
 <body class="bg-dark">
     <div id="app">
