@@ -33,16 +33,25 @@ class ItemController extends Controller
 
     public function drink()
     {
-        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/drink');
+        $category = $this->get_category('D');
+
+        $first_cat = reset($category);
+
+        return $this->get_drink($first_cat['abbreviation']);
+    }
+
+    public function get_drink($active)
+    {
+        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/drink/'.$active);
     
         $jsonData = $response->json();
 
-        $data = $this->reconstruct($jsonData['Items']);
+        $items = $this->unmarshal($jsonData['Items']);
+        $items = $this->reconstruct($items);
 
-        return view('drink', [
-            'items' => $data['items'],
-            'category' => $data['category']
-        ]);
+        $categories = $this->get_category('D');
+
+        return view('drink', compact('items', 'categories', 'active'));
     }
 
     public function unmarshal($jsonData)
