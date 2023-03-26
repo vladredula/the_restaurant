@@ -14,11 +14,11 @@
 
     <style>
         .nav-pills > li.active{
-            background-color: #dc3545;
+            background-color: rgba(205, 44, 52);
         }
     </style>
 </head>
-<body class="bg-dark">
+<body>
     <div id="app">
         <nav class="row justify-content-center navbar navbar-expand">
             <div class="col-md-11 col-lg-10 col-xl-9 col-xxl-7">
