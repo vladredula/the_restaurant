@@ -21,7 +21,7 @@
 <body>
     <div id="app">
         <nav class="row justify-content-center navbar navbar-expand">
-            <div class="col-md-11 col-lg-10 col-xl-9 col-xxl-7">
+            <div class="container">
                 <a class="navbar-brand" href="{{ url('/menu') }}">
                     <img src="https://www.tgifridays.co.jp/wp/wp-content/themes/wps-theme/_/img/logo.png" alt="TGI Friday's">
                 </a>

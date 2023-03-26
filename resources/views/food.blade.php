@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-11 col-lg-10 col-xl-9 col-xxl-8">
+        <div class="col-xxl-11">
             <ul class="nav nav-pills nav-fill bg-dark">
             @foreach ($categories as $id => $category)
                 <li class="nav-item mx-auto {{ (isset($active) && $active == $category['abbreviation']) ? 'active' : (!isset($active) && $id == 0 ? 'active' : '') }}">
@@ -23,15 +23,15 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-11 col-lg-10 col-xl-9 col-xxl-8">
+        <div class="col-xxl-11">
         @foreach ($items as $subcategory => $item)
             <div class="d-grid pt-3">
                 <button href="#{{ $subcategory }}" data-bs-toggle="collapse" class="btn btn-danger rounded-0 text-start">{{ ($subcategory == 'none' ? $categories[0]['name'] : $subcategory ) }}</button>
             </div>
-            <div class="row" id="{{ $subcategory }}">
+            <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="{{ $subcategory }}">
                 @foreach ($item as $food)
-                <div class="col-sm-6 col-md-4 col-lg-3 py-3">
-                    <div class="card rounded-0 bg-dark">
+                <div class="col py-3">
+                    <div class="card h-100 rounded-0 bg-dark" style="min-width: 150px;">
                         <img src="{{ $food['img_url'] }}" class="card-img-top rounded-0" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-white">{{ $food['name'] }}</h5>
