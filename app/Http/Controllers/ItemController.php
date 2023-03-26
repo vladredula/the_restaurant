@@ -28,6 +28,18 @@ class ItemController extends Controller
         ]);
     }
 
+    public function get_food($active)
+    {
+        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/food/'.$active);
+    
+        $jsonData = $response->json();
+
+        $items = $this->unmarshal($jsonData['Items']);
+        $categories = $this->get_category('F');
+
+        return view('food', compact('items', 'categories', 'active'));
+    }
+
     public function drink()
     {
         $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/drink');
@@ -79,7 +91,7 @@ class ItemController extends Controller
                 $sub_cat = $item['subcategory'];
             }
 
-            $new_data[$item['category']][$sub_cat][] = $item;
+            $new_data[$sub_cat][] = $item;
         }
 
         return $new_data;

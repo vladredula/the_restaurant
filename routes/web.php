@@ -21,4 +21,7 @@ Route::get('/', function () {
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/food', [ItemController::class, 'food'])->name('food');
+Route::get('/food/{category}', [ItemController::class, 'get_food'])->name('get_food');
+
+
 Route::get('/drink', [ItemController::class, 'drink'])->name('drink');
