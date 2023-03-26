@@ -8,7 +8,6 @@ use Illuminate\Support\Arr;
 
 class ItemController extends Controller
 {
-    //
     public function food()
     {
         $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/food');
@@ -90,6 +89,10 @@ class ItemController extends Controller
         $jsonData = $response->json();
 
         $data = $this->unmarshal($jsonData['Items']);
+
+        usort($data, function($a, $b) {
+            return $a['id'] - $b['id'];
+        });
 
         return $data;
     }
