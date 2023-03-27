@@ -18,7 +18,7 @@
         }
     </style>
 </head>
-<body class="bg-black">
+<body>
     <div id="app">
         <div class="container">
             <div class="row justify-content-center">
