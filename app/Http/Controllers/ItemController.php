@@ -8,6 +8,11 @@ use Illuminate\Support\Arr;
 
 class ItemController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function food()
     {
         $category = $this->get_category('F');
