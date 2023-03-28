@@ -15,12 +15,13 @@ use App\Http\Controllers\AuthController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+Route::get('/home', [MenuController::class, 'index'])->name('home');
 Route::get('/food', [ItemController::class, 'food'])->name('food');
 Route::get('/food/{category}', [ItemController::class, 'get_food'])->name('get_food');
 
