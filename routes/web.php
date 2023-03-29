@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ItemController;
-use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [MenuController::class, 'index'])->name('home');
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/food', [ItemController::class, 'food'])->name('food');
 Route::get('/food/{category}', [ItemController::class, 'get_food'])->name('get_food');
 
