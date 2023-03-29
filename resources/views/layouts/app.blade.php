@@ -36,10 +36,10 @@
                                     @guest
                                     @else
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Food</a>
+                                        <a class="nav-link active" aria-current="page" href="{{ url('/food') }}">Foods</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Drink</a>
+                                        <a class="nav-link active" aria-current="page" href="{{ url('/drink') }}">Drinks</a>
                                     </li>
                                     @endguest
                                 </ul>
