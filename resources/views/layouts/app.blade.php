@@ -33,6 +33,17 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarText">
                                 <ul class="navbar-nav ms-auto">
+                                    @guest
+                                    @else
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Food</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Drink</a>
+                                    </li>
+                                    @endguest
+                                </ul>
+                                <ul class="navbar-nav ms-auto">
                                     <!-- Authentication Links -->
                                     @guest
                                         @if (Route::has('login'))
