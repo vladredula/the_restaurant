@@ -26,53 +26,45 @@
         <div class="col-xxl-11">
             <nav class="navbar">
                 <ul class="nav nav-pills mx-auto py-3">
+                    @php
+                        $index = 0;
+                    @endphp
                     @foreach ($items as $subcategory => $item)
                     @php
                         $subcat = preg_replace('/[^a-zA-Z]/', '', $subcategory);
                     @endphp
                     @if ($subcat != 'none')
-                    <li class="nav-item">
-                        <button class="nav-link" id="{{ $subcat }}-tab" data-bs-toggle="pill" data-bs-target="#{{ $subcat }}" type="button" role="tab" aria-controls="{{ $subcat }}" aria-selected="">{{ strtoupper($subcategory) }}</button>
-                        {{-- <a class="nav-link" href="#{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}">{{ strtoupper($subcategory) }}</a> --}}
+                    <li class="nav-item mx-auto px-1">
+                        <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="{{ $subcat }}-tab" data-bs-toggle="pill" data-bs-target="#{{ $subcat }}" type="button" role="tab" aria-controls="{{ $subcat }}">
+                            {{ strtoupper($subcategory) }}
+                        </button>
                     </li>
                     @endif
-                {{-- <div class="d-grid pt-3">
-                    <button href="#{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}" data-bs-toggle="collapse" class="btn btn-danger rounded-0 text-start">{{ ($subcategory == 'none' ? $categories[0]['name'] : $subcategory ) }}</button>
-                </div> --}}
-                {{-- <div class="row collapse show row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}">
-                    @foreach ($item as $food)
-                    <div class="col py-3">
-                        <div class="card h-100 border-0 rounded-0 bg-dark" style="min-width: 180px;">
-                            <img src="{{ $food['img_url'] }}" class="card-img-top rounded-0" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-white">{{ $food['name'] }}</h5>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-text text-white">{{ '¥'.$food['price'] }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div> --}}
+                    @php
+                        $index++;
+                    @endphp
                     @endforeach
                 </ul>
             </nav>
+            @php
+                $index = 0;
+            @endphp
             @foreach ($items as $subcategory => $item)
             @php
                 $subcat = preg_replace('/[^a-zA-Z]/', '', $subcategory);
             @endphp
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade {{ $subcat == 'none' ? 'active show' : '' }}" id="{{ $subcat }}" role="tabpanel" aria-labelledby="{{ $subcat }}-tab">
-                    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex flex-wrap justify-content-center">
+                <div class="tab-pane fade {{ ($subcat == 'none' || $index == 0) ? 'active show' : '' }}" id="{{ $subcat }}" role="tabpanel" aria-labelledby="{{ $subcat }}-tab">
+                    <div class="row row-cols-xs-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex flex-wrap justify-content-center">
                         @foreach ($item as $food)
-                        <div class="col mx-auto p-3">
-                            <div class="card h-100 border-0" style="min-width: 180px;">
+                        <div class="col mx-auto px-3 pb-5">
+                            <div class="card h-100 border-0 text-center" style="min-width: 180px;">
                                 <img src="{{ $food['img_url'] }}" class="card-img-top rounded-0" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $food['name'] }}</h5>
-                                </div>
-                                <div class="card-footer">
-                                    <p class="card-text">{{ '¥'.$food['price'] }}</p>
+                                <div class="card-body bg-light">
+                                    <p class="card-title">{{ $food['name'] }}</p>
+                                    <p class="card-text text-muted text-end">
+                                        ¥{{ $food['price']/1.1 }} (with tax ¥{{ ($food['price']) }})
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -80,6 +72,9 @@
                     </div>
                 </div>
             </div>
+            @php
+                $index++;
+            @endphp
             @endforeach
         </div>
     </div>
