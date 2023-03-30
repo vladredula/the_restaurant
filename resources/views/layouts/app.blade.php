@@ -11,6 +11,12 @@
 
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+        <style>
+            h1{
+                text-shadow: 1px 1px 2px #3f3f3f;
+            }
+        </style>
     </head>
     <body>
         <div id="app">
@@ -31,17 +37,6 @@
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarText">
-                                    {{-- <ul class="navbar-nav ms-auto">
-                                        @guest
-                                        @else
-                                        <li class="nav-item">
-                                            <a class="nav-link" aria-current="page" href="{{ url('/food') }}">Foods</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" aria-current="page" href="{{ url('/drink') }}">Drinks</a>
-                                        </li>
-                                        @endguest
-                                    </ul> --}}
                                     <ul class="navbar-nav ms-auto">
                                         <!-- Authentication Links -->
                                         @guest
