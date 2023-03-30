@@ -30,7 +30,7 @@
             @if ($useFlex)
                 @foreach ($items as $subcat => $item)
                     @if ($marker % 2 == 0)
-                    <div class="col">
+                    <div class="col-sm-12">
                         <div class="col d-flex flex-wrap">
                     @endif
                         <div class="col-12">
@@ -57,7 +57,7 @@
                 @endif
             @else
             @foreach ($items as $subcategory => $item)
-                <div class="col" style="min-width: 260px;">
+                <div class="col-sm-12" style="min-width: 260px;">
                     <div class="d-grid pt-3">
                         <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}" data-bs-toggle="collapse" class="btn btn-dark rounded-0 text-start">{{ ($subcategory == 'none' ? $categories[0]['name'] : $subcategory ) }}</button>
                     </div>
