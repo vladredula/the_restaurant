@@ -5,3 +5,53 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+
+$light:      #d8e9e7;
+$dark:       #140916;
+$primary:    #29435f;
+$secondary:  #308898;
+$info:       #eaa725;
+$success:    #10aa5f;
+$warning:    #e6cc0f;
+$danger:     #f70a06;
+
+$theme-colors: (
+    "light":      #d8e9e7,
+    "dark":       #140916,
+    "primary":    #29435f,
+    "secondary":  #308898,
+    "info":       #eaa725,
+    "success":    #10aa5f,
+    "warning":    #e6cc0f,
+    "danger":     #f70a06,
+);
+
+// $light:      #d7deee;
+// $dark:       #191938;
+// $primary:    #2d3848;
+// $secondary:  #cd2c34;
+// $info:       #249171;
+// $success:    #149856;
+// $warning:    #e0c716;
+// $danger:     #ee0f09;
+
+// $theme-colors: (
+//     "light":     $light,
+//     "dark":      $dark,
+//     "primary":   $primary,
+//     "secondary": $secondary,
+//     "info":      $info,
+//     "success":   $success,
+//     "warning":   $warning,
+//     "danger":    $danger,
+// );
+
+
+// nav
+$nav-link-color: $dark;
+$nav-link-hover-color: $secondary;
+
+$nav-tabs-border-radius: 50rem;
+$nav-pills-border-radius: 50rem;
+$nav-pills-link-active-bg: $dark;
