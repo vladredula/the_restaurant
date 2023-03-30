@@ -4,11 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>The Restaurant</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        <title>{{ config('app.name') }}</title>
 
         <!-- Styles -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -19,9 +15,7 @@
                 <div class="col-xxl-11">
                     <nav class="navbar navbar-expand-lg">
                         <div class="container-fluid">
-                            <a class="navbar-brand" href="{{ url('/') }}">
-                                <img src="https://www.tgifridays.co.jp/wp/wp-content/themes/wps-theme/_/img/logo.png" alt="TGI Friday's">
-                            </a>
+                            <a class="navbar-brand fs-1" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
