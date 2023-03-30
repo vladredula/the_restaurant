@@ -21,10 +21,11 @@
                             <div class="container-fluid">
                                 <div class="d-flex">
                                     <a class="navbar-brand fs-4" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
-                                    @guest
-                                    @else
-                                    <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">Food Menu</p>
-                                    @endguest
+                                    @if (strpos(url()->current(), 'food'))
+                                        <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">Food Menu</p>
+                                    @elseif (strpos(url()->current(), 'drink'))
+                                        <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">Drinks Menu</p>
+                                    @endif
                                 </div>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -56,9 +57,15 @@
                                                 </li>
                                             @endif
                                         @else
+                                            @if (strpos(url()->current(), 'food'))
                                             <li class="nav-item">
                                                 <a class="nav-link" aria-current="page" href="{{ url('/drink') }}">Drinks</a>
                                             </li>
+                                            @elseif (strpos(url()->current(), 'drink'))
+                                            <li class="nav-item">
+                                                <a class="nav-link" aria-current="page" href="{{ url('/food') }}">Foods</a>
+                                            </li>
+                                            @endif
                                             <li class="nav-item dropdown">
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     {{ Auth::user()->name }}
