@@ -19,7 +19,13 @@
                     <div class="col-xxl-11">
                         <nav class="navbar navbar-expand-md navbar-light">
                             <div class="container-fluid">
-                                <a class="navbar-brand fs-1" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
+                                <div class="d-flex">
+                                    <a class="navbar-brand fs-4" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
+                                    @guest
+                                    @else
+                                    <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">Food Menu</p>
+                                    @endguest
+                                </div>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
@@ -50,6 +56,9 @@
                                                 </li>
                                             @endif
                                         @else
+                                            <li class="nav-item">
+                                                <a class="nav-link" aria-current="page" href="{{ url('/drink') }}">Drinks</a>
+                                            </li>
                                             <li class="nav-item dropdown">
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     {{ Auth::user()->name }}
