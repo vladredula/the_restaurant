@@ -39,7 +39,17 @@
                             </div>
                             <ul class="list-group rounded-0 collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
                                 @foreach ($item as $drink)
-                                <li class="list-group-item bg-light">{{ $drink['name'] }}</li>
+                                <li class="list-group-item bg-light d-flex flex-column">
+                                    <div class="">{{ $drink['name'] }}</div>
+                                    @if (count($drink['price']) > 1)
+                                        <br>
+                                    @endif
+                                    <div class="text-muted text-end mt-auto">
+                                    @foreach ($drink['price'] as $size => $price)  
+                                        {{ $size != '1' ? $size." : " : "" }} {{ ($price) }}円 
+                                    @endforeach
+                                    </div>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -63,7 +73,14 @@
                     </div>
                     <ul class="list-group rounded-0 collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}">
                         @foreach ($item as $drink)
-                        <li class="list-group-item bg-light">{{ $drink['name'] }}</li>
+                        <li class="list-group-item bg-light d-flex flex-column">
+                            <div class="">{{ $drink['name'] }}</div>
+                            <div class="text-muted text-end mt-auto">
+                            @foreach ($drink['price'] as $size => $price)
+                                {{ $size != '1' ? $size." :" : "" }} {{ ($price) }}円 
+                            @endforeach
+                            </div>
+                        </li>
                         @endforeach
                     </ul>
                 </div>

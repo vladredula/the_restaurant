@@ -58,13 +58,18 @@
                     <div class="row row-cols-xs-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex flex-wrap justify-content-center">
                         @foreach ($item as $food)
                         <div class="col mx-auto px-3 pb-5">
-                            <div class="card h-100 border-0 text-center" style="min-width: 180px;">
+                            <div class="card h-100 border-0" style="min-width: 180px;">
                                 <img src="{{ $food['img_url'] }}" class="card-img-top rounded-0" alt="...">
-                                <div class="card-body bg-light">
-                                    <p class="card-title">{{ $food['name'] }}</p>
-                                    <p class="card-text text-muted text-end">
-                                        ¥{{ $food['price']/1.1 }} (with tax ¥{{ ($food['price']) }})
-                                    </p>
+                                <div class="card-body bg-light d-flex flex-column">
+                                    <p class="card-title fw-bold">{{ $food['name'] }}</p>
+                                    <div class="text-muted text-end mt-auto">
+                                    @foreach ($food['price'] as $size => $price)
+                                        {{ $size != '1' ? $size." : " : "" }}{{ ($price) }}円 
+                                        @if (count($food['price']) > 1)
+                                            <br>
+                                        @endif
+                                    @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
