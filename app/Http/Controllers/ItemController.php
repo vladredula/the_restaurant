@@ -74,6 +74,18 @@ class ItemController extends Controller
                     $temp_data[$key] = "";
                 } 
                 else {
+                    if ($key == "price") {
+                        $temp = explode(",", $new_value);
+
+                        $prices = [];
+                        foreach ($temp as $price) {
+                            $price = explode(":", $price);
+                            $prices[$price[0]] = $price[1];
+                        }
+
+                        $new_value = $prices;
+                    }
+
                     $temp_data[$key] = $new_value;
                 }
             }
