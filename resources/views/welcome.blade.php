@@ -15,7 +15,7 @@
                 <div class="col-xxl-11">
                     <nav class="navbar navbar-expand-lg">
                         <div class="container-fluid">
-                            <a class="navbar-brand fs-1" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
+                            <a class="navbar-brand fs-4" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
