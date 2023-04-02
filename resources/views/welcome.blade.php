@@ -62,7 +62,10 @@
         </div>
         <main>
             <div class="container">
-                
+                <div class="row justify-content-center">
+                    <div class="col-xxl-11">
+                    </div>
+                </div>
             </div>
         </main>
     </body>
