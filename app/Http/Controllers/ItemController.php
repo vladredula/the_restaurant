@@ -22,9 +22,9 @@ class ItemController extends Controller
         return $this->get_food($first_cat['abbreviation']);
     }
 
-    public function get_food($active)
+    public function get_food()
     {
-        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/food/'.$active);
+        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/food');
     
         $jsonData = $response->json();
 
@@ -33,7 +33,7 @@ class ItemController extends Controller
 
         $categories = $this->get_category('F');
 
-        return view('food', compact('items', 'categories', 'active'));
+        return view('food', compact('items', 'categories'));
     }
 
     public function drink()
@@ -107,7 +107,7 @@ class ItemController extends Controller
                 $sub_cat = $item['subcategory'];
             }
 
-            $new_data[$sub_cat][] = $item;
+            $new_data[$item['category']][$sub_cat][] = $item;
         }
 
         return $new_data;
