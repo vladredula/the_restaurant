@@ -55,3 +55,6 @@ $nav-link-hover-color: $secondary;
 $nav-tabs-border-radius: 50rem;
 $nav-pills-border-radius: 50rem;
 $nav-pills-link-active-bg: $dark;
+
+$carousel-transition-duration: .6s;
+$carousel-transition: transform $carousel-transition-duration none;
