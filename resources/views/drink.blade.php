@@ -7,7 +7,7 @@
             <ul class="nav nav-pills nav-fill bg-light">
             @foreach ($categories as $id => $category)
                 <li class="nav-item mx-auto">
-                    <a class="nav-link rounded-0 {{ (isset($active) && $active == $category['abbreviation']) ? 'active' : (!isset($active) && $id == 0 ? 'active' : '') }}" href="{{ url('drink', ['category' => $category['abbreviation']]) }}">{{ strtoupper($category['name']) }}</a>
+                    <button class="nav-link rounded-0 {{ $id == 0 ? 'active' : '' }}" id="{{ $category['abbreviation'] }}-tab" data-bs-toggle="pill" data-bs-target="#{{ $category['abbreviation'] }}" type="button" role="tab" aria-selected="{{ $id == 0 ? 'true' : 'false' }}">{{ strtoupper($category['name']) }}</button>
                 </li>
             @endforeach
             </ul>
@@ -22,70 +22,54 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-xxl-11">
-            <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-col-xl-3">
-            @php
-                $marker = 0;
-                $useFlex = count($items) > 4 ? true : false;
-            @endphp
-            @if ($useFlex)
-                @foreach ($items as $subcat => $item)
-                    @if ($marker % 2 == 0)
-                    <div class="col-sm-12">
-                        <div class="col d-flex flex-wrap">
-                    @endif
-                        <div class="col-12">
-                            <div class="d-grid pt-3">
-                                <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}" data-bs-toggle="collapse" class="btn btn-dark rounded-0 text-start">{{ ($subcat == 'none' ? $categories[0]['name'] : $subcat ) }}</button>
-                            </div>
-                            <ul class="list-group rounded-0 collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
-                                @foreach ($item as $drink)
-                                <li class="list-group-item bg-light d-flex flex-column">
-                                    <div class="">{{ $drink['name'] }}</div>
-                                    @if (count($drink['price']) > 1)
-                                        <br>
-                                    @endif
-                                    <div class="text-muted text-end mt-auto">
-                                    @foreach ($drink['price'] as $size => $price)  
-                                        {{ $size != '1' ? $size." : " : "" }} {{ ($price) }}円 
-                                    @endforeach
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @if ($marker % 2 != 0)
-                        </div>
-                    </div>
-                    @endif
+            <div class="tab-content">
+                @foreach ($categories as $id => $category)
+                <div class="tab-pane fade {{ $id == 0 ? 'active show' : '' }}" id="{{ $category['abbreviation'] }}" role="tabpanel" aria-labelledby="{{ $category['abbreviation'] }}-tab">
+                    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-col-xl-3">
                     @php
-                        $marker++;
+                        $marker = 0;
+                        $useFlex = count($items[$category['abbreviation']]) > 4 ? true : false;
                     @endphp
-                @endforeach
-                @if ($marker % 2 == 0)
-                        </div>
-                    </div>
-                @endif
-            @else
-            @foreach ($items as $subcategory => $item)
-                <div class="col-sm-12" style="min-width: 260px;">
-                    <div class="d-grid pt-3">
-                        <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}" data-bs-toggle="collapse" class="btn btn-dark rounded-0 text-start">{{ ($subcategory == 'none' ? $categories[0]['name'] : $subcategory ) }}</button>
-                    </div>
-                    <ul class="list-group rounded-0 collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcategory) }}">
-                        @foreach ($item as $drink)
-                        <li class="list-group-item bg-light d-flex flex-column">
-                            <div class="">{{ $drink['name'] }}</div>
-                            <div class="text-muted text-end mt-auto">
-                            @foreach ($drink['price'] as $size => $price)
-                                {{ $size != '1' ? $size." :" : "" }} {{ ($price) }}円 
-                            @endforeach
+                    @foreach ($items[$category['abbreviation']] as $subcat => $item)
+                        @if ($useFlex && $marker % 2 == 0)
+                        <div class="col-sm-12">
+                            <div class="col d-flex flex-wrap">
+                        @endif
+                            <div class="col-12">
+                                <div class="d-grid pt-3">
+                                    <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}" data-bs-toggle="collapse" class="btn btn-dark rounded-0 text-start">{{ ($subcat == 'none' ? $category['name'] : $subcat ) }}</button>
+                                </div>
+                                <ul class="list-group rounded-0 collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
+                                    @foreach ($item as $drink)
+                                    <li class="list-group-item bg-light d-flex flex-column">
+                                        <div>{{ $drink['name'] }}</div>
+                                        @if (count($drink['price']) > 1)
+                                            <br>
+                                        @endif
+                                        <div class="text-muted text-end mt-auto">
+                                        @foreach ($drink['price'] as $size => $price)  
+                                            {{ $size != '1' ? $size." : " : "" }} {{ ($price) }}円 
+                                        @endforeach
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                </ul>
                             </div>
-                        </li>
-                        @endforeach
-                    </ul>
+                        @if ($useFlex && $marker % 2 != 0)
+                            </div>
+                        </div>
+                        @endif
+                        @php
+                            $marker++;
+                        @endphp
+                    @endforeach
+                    @if ($useFlex && $marker % 2 != 0)
+                            </div>
+                        </div>
+                    @endif
+                    </div>
                 </div>
-            @endforeach
-            @endif
+                @endforeach
             </div>
         </div>
     </div>

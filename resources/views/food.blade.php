@@ -7,7 +7,7 @@
             <ul class="nav nav-pills nav-fill bg-light">
             @foreach ($categories as $id => $category)
                 <li class="nav-item mx-auto">
-                    <button class="nav-link rounded-0 {{ $id == 0 ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#foodCarousel" data-bs-slide-to="{{ $id }}" type="button" role="tab" aria-controls="pills-home" aria-selected="{{ $id == 0 ? 'true' : 'false' }}">{{ strtoupper($category['name']) }}</button>
+                    <button class="nav-link rounded-0 {{ $id == 0 ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#foodCarousel" data-bs-slide-to="{{ $id }}" type="button" role="tab" aria-selected="{{ $id == 0 ? 'true' : 'false' }}">{{ strtoupper($category['name']) }}</button>
                 </li>
             @endforeach
             </ul>
@@ -47,7 +47,7 @@
                         @php
                             $subcat = preg_replace('/[^a-zA-Z]/', '', $subcategory);
                         @endphp
-                        <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-content">
                             <div class="tab-pane fade {{ ($subcat == 'none' || $index == 0) ? 'active show' : '' }}" id="{{ $subcat }}" role="tabpanel" aria-labelledby="{{ $subcat }}-tab">
                                 <div class="row row-cols-xs-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex flex-wrap justify-content-center">
                                     @foreach ($item as $food)

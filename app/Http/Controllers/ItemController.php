@@ -15,15 +15,6 @@ class ItemController extends Controller
 
     public function food()
     {
-        $category = $this->get_category('F');
-
-        $first_cat = reset($category);
-
-        return $this->get_food($first_cat['abbreviation']);
-    }
-
-    public function get_food()
-    {
         $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/food');
     
         $jsonData = $response->json();
@@ -38,16 +29,7 @@ class ItemController extends Controller
 
     public function drink()
     {
-        $category = $this->get_category('D');
-
-        $first_cat = reset($category);
-
-        return $this->get_drink($first_cat['abbreviation']);
-    }
-
-    public function get_drink($active)
-    {
-        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/drink/'.$active);
+        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/drink');
     
         $jsonData = $response->json();
 
@@ -56,7 +38,7 @@ class ItemController extends Controller
 
         $categories = $this->get_category('D');
 
-        return view('drink', compact('items', 'categories', 'active'));
+        return view('drink', compact('items', 'categories'));
     }
 
     public function unmarshal($jsonData)
