@@ -15,7 +15,7 @@
                 <div class="col-xxl-11">
                     <nav class="navbar navbar-expand-lg">
                         <div class="container-fluid">
-                            <a class="navbar-brand fs-4" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
+                            <a class="navbar-brand fs-4" href="{{ url('/') }}" style="font-family: 'Lobster'"></a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -62,8 +62,13 @@
         </div>
         <main>
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xxl-11">
+                <div class="row">
+                    <div class="text-center">
+                        <p class="fs-3 fst-italic pt-5 mb-0">Welcome to</p>
+                        <h1 class="display-1" style="font-family: 'Lobster';font-size: 8vw;">{{ config('app.name') }}</h1>
+                        <a class="text-decoration-none" href="{{ url('/menu') }}">
+                            <button class="btn btn-dark rounded-pill">View Menu -></button>
+                        </a>
                     </div>
                 </div>
             </div>
