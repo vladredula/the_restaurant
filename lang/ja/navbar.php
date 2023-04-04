@@ -17,5 +17,5 @@ return [
     'register' => 'レジスター',
     'logout' => 'ログアウト',
     'food' => 'フード',
-    'drink' => 'ドリンクス',
+    'drink' => 'ドリンク',
 ];
