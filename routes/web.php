@@ -28,3 +28,5 @@ Route::get('/food/{category}', [ItemController::class, 'get_food'])->name('get_f
 
 Route::get('/drink', [ItemController::class, 'drink'])->name('drink');
 Route::get('/drink/{category}', [ItemController::class, 'get_drink'])->name('get_drink');
+
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
