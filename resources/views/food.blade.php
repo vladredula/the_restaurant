@@ -55,7 +55,13 @@
                                         <div class="card h-100 border-0" style="min-width: 180px;">
                                             <img src="{{ $food['img_url'] }}" class="card-img-top rounded-0" alt="...">
                                             <div class="card-body bg-light d-flex flex-column">
-                                                <p class="card-title fw-bold">{{ $food['name'] }}</p>
+                                                <p class="card-title fw-bold">
+                                                    @if (App::getLocale() != 'en')
+                                                        {{ $food['tname'] }}
+                                                    @else
+                                                        {{ $food['name'] }}
+                                                    @endif
+                                                </p>
                                                 <div class="text-muted text-end mt-auto">
                                                 @foreach ($food['price'] as $size => $price)
                                                     {{ $size != '1' ? $size." : " : "" }}{{ ($price) }}円 

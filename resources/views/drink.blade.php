@@ -42,7 +42,13 @@
                                 <ul class="list-group rounded-0 collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
                                     @foreach ($item as $drink)
                                     <li class="list-group-item bg-light d-flex flex-column">
-                                        <div>{{ $drink['name'] }}</div>
+                                        <div>
+                                            @if (App::getLocale() != 'en')
+                                                {{ $drink['tname'] }}
+                                            @else
+                                                {{ $drink['name'] }}
+                                            @endif
+                                        </div>
                                         @if (count($drink['price']) > 1)
                                             <br>
                                         @endif
