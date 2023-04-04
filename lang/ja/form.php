@@ -22,6 +22,6 @@ return [
     'name' => '名前',
     'confirm_password' => 'パスワードを認証する',
     'reset_password' => 'パスワードをリセット',
-    'password_send_link' => 'パスワードリセットリンクを送信',
+    'password_send_link' => 'リセットリンクを送信',
 
 ];
