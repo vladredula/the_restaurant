@@ -25,13 +25,13 @@
                                     @guest
                                         @if (Route::has('login'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                                <a class="nav-link" href="{{ route('login') }}">{{ __('navbar.login') }}</a>
                                             </li>
                                         @endif
             
                                         @if (Route::has('register'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                <a class="nav-link" href="{{ route('register') }}">{{ __('navbar.register') }}</a>
                                             </li>
                                         @endif
                                     @else
@@ -44,7 +44,7 @@
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
+                                                    {{ __('navbar.logout') }}
                                                 </a>
             
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -53,6 +53,18 @@
                                             </div>
                                         </li>
                                     @endguest
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="fi fi-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        @foreach (Config::get('languages') as $lang => $language)
+                                            @if ($lang != App::getLocale())
+                                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="fi fi-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+                                            @endif
+                                        @endforeach
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
