@@ -77,7 +77,7 @@
                 <div class="row">
                     <div class="text-center">
                         <p class="fs-3 fst-italic pt-5 mb-0">{{ __('messages.welcome') }}</p>
-                        <h1 class="display-1" style="font-family: 'Lobster';font-size: 8vw;">{{ config('app.name') }}</h1>
+                        <h1 class="display-1" style="font-family: 'Lobster';">{{ config('app.name') }}</h1>
                         <a class="text-decoration-none" href="{{ url('/menu') }}">
                             <button class="btn btn-dark rounded-pill">{{ __('content.menu') }}</button>
                         </a>

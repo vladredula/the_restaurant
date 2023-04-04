@@ -48,10 +48,10 @@
                                 <div class="row row-cols-xs-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 d-flex flex-wrap justify-content-center">
                                 @foreach ($item as $food)
                                     <div class="col mx-auto px-3 pb-4">
-                                        <div class="card h-100 border-0 rounded-0 bg-light" style="min-width: 180px;">
+                                        <div class="card h-100 bg-light" style="min-width: 180px;">
                                             <div class="row g-0">
                                                 <div class="col-5 col-sm-12">
-                                                    <img src="{{ $food['img_url'] }}" class="card-img-top rounded-0" alt="...">
+                                                    <img src="{{ $food['img_url'] }}" class="card-img-top" alt="...">
                                                 </div>
                                                 <div class="col-7 col-sm-12 h-100">
                                                     <div class="card-body d-flex flex-column">

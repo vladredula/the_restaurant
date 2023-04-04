@@ -37,9 +37,9 @@
                         @endif
                             <div class="col-12">
                                 <div class="d-grid pt-3">
-                                    <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}" data-bs-toggle="collapse" class="btn btn-dark rounded-0 text-start">{{ ($subcat == 'none' ? $category['name'] : $subcat ) }}</button>
+                                    <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}" data-bs-toggle="collapse" class="btn btn-dark text-start">{{ ($subcat == 'none' ? $category['name'] : $subcat ) }}</button>
                                 </div>
-                                <ul class="list-group rounded-0 collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
+                                <ul class="list-group collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
                                     @foreach ($item as $drink)
                                     <li class="list-group-item bg-light d-flex flex-column">
                                         <div>
