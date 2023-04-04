@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Navbar Language Lines
+    | Content Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -13,9 +13,10 @@ return [
     |
     */
 
-    'login' => 'ログイン',
-    'register' => 'レジスター',
-    'logout' => 'ログアウト',
-    'food' => 'フード',
-    'drink' => 'ドリンク',
+    'menu' => 'Menu',
+    'food' => 'Food',
+    'drink' => 'Drink',
+    'food_menu' => 'Food Menu',
+    'drink_menu' => 'Drink Menu',
+
 ];

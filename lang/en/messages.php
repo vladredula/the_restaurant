@@ -18,5 +18,6 @@ return [
     'check_email' => 'Before proceeding, please check your email for a verification link.',
     'if_email_not_received' => 'If you did not receive the email',
     'click_here' => 'click here to request another',
+    'welcome' => 'Welcome to',
 
 ];

@@ -14,11 +14,12 @@ return [
     */
 
     'login' => 'Login',
+    'register' => 'Register',
+    'logout' => 'Logout',
     'email' => 'Email Address',
     'password' => 'Password',
     'remember' => 'Remember Me',
     'forgot_password' => 'Forgot Your Password?',
-    'register' => 'Register',
     'name' => 'Name',
     'confirm_password' => 'Confirm Password',
     'reset_password' => 'Reset Password',

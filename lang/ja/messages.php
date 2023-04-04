@@ -18,5 +18,6 @@ return [
     'check_email' => '続行する前に、メールで確認リンクを確認してください。',
     'if_email_not_received' => 'メールが届かない場合',
     'click_here' => 'ここをクリックして別のものをリクエストする',
+    'welcome' => 'ようこそ',
 
 ];

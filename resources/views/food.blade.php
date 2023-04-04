@@ -56,11 +56,7 @@
                                                 <div class="col-7 col-sm-12 h-100">
                                                     <div class="card-body d-flex flex-column">
                                                         <p class="card-title fw-bold">
-                                                            @if (App::getLocale() != 'en')
-                                                                {{ $food['tname'] }}
-                                                            @else
-                                                                {{ $food['name'] }}
-                                                            @endif
+                                                            {{ App::getLocale() != 'en' ? $food['tname'] : $food['name'] }}
                                                         </p>
                                                         <div class="text-muted text-end mt-auto">
                                                         @foreach ($food['price'] as $size => $price)

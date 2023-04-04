@@ -43,11 +43,7 @@
                                     @foreach ($item as $drink)
                                     <li class="list-group-item bg-light d-flex flex-column">
                                         <div>
-                                            @if (App::getLocale() != 'en')
-                                                {{ $drink['tname'] }}
-                                            @else
-                                                {{ $drink['name'] }}
-                                            @endif
+                                            {{ App::getLocale() != 'en' ? $drink['tname'] : $drink['name'] }}
                                         </div>
                                         @if (count($drink['price']) > 1)
                                             <br>

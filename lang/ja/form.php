@@ -14,11 +14,12 @@ return [
     */
 
     'login' => 'ログイン',
+    'register' => '登録',
+    'logout' => 'ログアウト',
     'email' => 'メールアドレス',
     'password' => 'パスワード',
-    'remember' => '私を覚えてますか',
-    'forgot_password' => 'パスワードをお忘れですか',
-    'register' => '登録',
+    'remember' => 'ログイン情報を保存する',
+    'forgot_password' => 'パスワードをお忘れた方',
     'name' => '名前',
     'confirm_password' => 'パスワードを認証する',
     'reset_password' => 'パスワードをリセット',

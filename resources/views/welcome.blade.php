@@ -25,13 +25,13 @@
                                     @guest
                                         @if (Route::has('login'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('navbar.login') }}</a>
+                                                <a class="nav-link" href="{{ route('login') }}">{{ __('form.login') }}</a>
                                             </li>
                                         @endif
             
                                         @if (Route::has('register'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('navbar.register') }}</a>
+                                                <a class="nav-link" href="{{ route('register') }}">{{ __('form.register') }}</a>
                                             </li>
                                         @endif
                                     @else
@@ -44,7 +44,7 @@
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
-                                                    {{ __('navbar.logout') }}
+                                                    {{ __('form.logout') }}
                                                 </a>
             
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -76,10 +76,10 @@
             <div class="container">
                 <div class="row">
                     <div class="text-center">
-                        <p class="fs-3 fst-italic pt-5 mb-0">Welcome to</p>
+                        <p class="fs-3 fst-italic pt-5 mb-0">{{ __('messages.welcome') }}</p>
                         <h1 class="display-1" style="font-family: 'Lobster';font-size: 8vw;">{{ config('app.name') }}</h1>
                         <a class="text-decoration-none" href="{{ url('/menu') }}">
-                            <button class="btn btn-dark rounded-pill">View Menu -></button>
+                            <button class="btn btn-dark rounded-pill">{{ __('content.menu') }}</button>
                         </a>
                     </div>
                 </div>

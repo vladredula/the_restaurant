@@ -28,9 +28,9 @@
                                 <div class="d-flex">
                                     <a class="navbar-brand fs-4" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
                                     @if (strpos(url()->current(), 'food'))
-                                        <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">Food Menu</p>
+                                        <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">{{ __('content.food_menu') }}</p>
                                     @elseif (strpos(url()->current(), 'drink'))
-                                        <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">Drinks Menu</p>
+                                        <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">{{ __('content.drink_menu') }}</p>
                                     @endif
                                 </div>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,23 +42,23 @@
                                         @guest
                                             @if (Route::has('login'))
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('navbar.login') }}</a>
+                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('form.login') }}</a>
                                                 </li>
                                             @endif
                 
                                             @if (Route::has('register'))
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('navbar.register') }}</a>
+                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('form.register') }}</a>
                                                 </li>
                                             @endif
                                         @else
                                             @if (strpos(url()->current(), 'food'))
                                             <li class="nav-item">
-                                                <a class="nav-link" aria-current="page" href="{{ url('/drink') }}">{{ __('navbar.drink') }}</a>
+                                                <a class="nav-link" aria-current="page" href="{{ url('/drink') }}">{{ __('content.drink') }}</a>
                                             </li>
                                             @elseif (strpos(url()->current(), 'drink'))
                                             <li class="nav-item">
-                                                <a class="nav-link" aria-current="page" href="{{ url('/food') }}">{{ __('navbar.food') }}</a>
+                                                <a class="nav-link" aria-current="page" href="{{ url('/food') }}">{{ __('content.food') }}</a>
                                             </li>
                                             @endif
                                             <li class="nav-item dropdown">
@@ -70,7 +70,7 @@
                                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
-                                                        {{ __('navbar.logout') }}
+                                                        {{ __('form.logout') }}
                                                     </a>
                 
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

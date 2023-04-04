@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-xxl-11 p-3" style="background-image:linear-gradient(to right, rgb(20, 9, 22, 1), rgb(20, 9, 22, 1), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),url('images/food.jpeg');background-size:cover;background-position-x:right;">
             <a class="text-decoration-none" href="{{ url('/food') }}">
-                <h1 class="p-5 m-4 text-white">FOOD</h1>
+                <h1 class="p-5 m-4 text-white">{{ strtoupper(__('content.food')) }}</h1>
             </a>
         </div>
         <div class="col-xxl-11 p-3 mt-4" style="background-image:linear-gradient(to right, rgb(20, 9, 22, 1), rgb(20, 9, 22, 1), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),url('images/drink.jpeg');background-size:cover;background-position-x:right;transform: scaleX(-1);">
             <a class="text-decoration-none" href="{{ url('/drink') }}">
-                <h1 class="text-end p-5 m-4 text-white" style="transform: scaleX(-1)">DRINK</h1>
+                <h1 class="text-end p-5 m-4 text-white" style="transform: scaleX(-1)">{{ strtoupper(__('content.drink')) }}</h1>
             </a>
         </div>
     </div>
