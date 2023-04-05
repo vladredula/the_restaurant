@@ -13,16 +13,16 @@ return [
     |
     */
 
-    'login' => 'Login',
-    'register' => 'Register',
-    'logout' => 'Logout',
-    'email' => 'Email Address',
-    'password' => 'Password',
-    'remember' => 'Remember Me',
-    'forgot_password' => 'Forgot Your Password?',
-    'name' => 'Name',
-    'confirm_password' => 'Confirm Password',
-    'reset_password' => 'Reset Password',
+    'login'              => 'Login',
+    'register'           => 'Register',
+    'logout'             => 'Logout',
+    'email'              => 'Email Address',
+    'password'           => 'Password',
+    'remember'           => 'Remember Me',
+    'forgot_password'    => 'Forgot Your Password?',
+    'name'               => 'Name',
+    'confirm_password'   => 'Confirm Password',
+    'reset_password'     => 'Reset Password',
     'password_send_link' => 'Send Password Reset Link',
 
 ];

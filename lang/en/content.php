@@ -13,10 +13,21 @@ return [
     |
     */
 
-    'menu' => 'Menu',
-    'food' => 'Food',
-    'drink' => 'Drink',
-    'food_menu' => 'Food Menu',
+    'menu'       => 'Menu',
+    'food'       => 'Food',
+    'drink'      => 'Drink',
+    'food_menu'  => 'Food Menu',
     'drink_menu' => 'Drink Menu',
+    'half'       => 'Half size:',
+    'regular'    => 'Regular size:',
+    'full'       => 'Full size:',
+    'glass'      => 'Glass:',
+    'bottle'     => 'Bottle:',
+    'halfbottle' => 'Half Bottle:',
+    's'          => 'S:',
+    'r'          => 'M:',
+    'l'          => 'L:',
+    '1p'         => '1 Piece:',
+    '2p'         => '2 Pieces:',
 
 ];
