@@ -60,7 +60,7 @@
                                                         </p>
                                                         <div class="text-muted text-end mt-auto">
                                                         @foreach ($food['price'] as $size => $price)
-                                                            {{ $size != '1' ? $size." : " : "" }}{{ ($price) }}円 
+                                                            {{ $size != '1' ? __('content.'.strtolower($size)) : "" }} {{ ($price) }}円  
                                                             @if (count($food['price']) > 1)
                                                                 <br>
                                                             @endif

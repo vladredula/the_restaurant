@@ -39,7 +39,7 @@
                                 <div class="d-grid pt-3">
                                     <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}" data-bs-toggle="collapse" class="btn btn-dark text-start">{{ ($subcat == 'none' ? $category['name'] : $subcat ) }}</button>
                                 </div>
-                                <ul class="list-group collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
+                                <ul class="list-group list-group-flush collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
                                     @foreach ($item as $drink)
                                     <li class="list-group-item bg-light d-flex flex-column">
                                         <div>
@@ -50,7 +50,7 @@
                                         @endif
                                         <div class="text-muted text-end mt-auto">
                                         @foreach ($drink['price'] as $size => $price)  
-                                            {{ $size != '1' ? $size." : " : "" }} {{ ($price) }}円 
+                                            {{ $size != '1' ? __('content.'.strtolower($size)) : "" }} {{ ($price) }}円 
                                         @endforeach
                                         </div>
                                     </li>
