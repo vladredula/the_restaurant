@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use hisorange\BrowserDetect\Parser as Browser;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -10,7 +11,9 @@ class ItemController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        if (!Browser::isMobile()) {
+            $this->middleware('auth');
+        }
     }
 
     public function food()
