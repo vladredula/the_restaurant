@@ -21,6 +21,33 @@
     <body>
         <div id="app">
             <div class="container">
+                @mobile
+                <div class="fixed-bottom">
+                    <ul class="nav nav-pills nav-fill justify-content-center bg-dark">
+                        <li class="nav-item my-auto">
+                            <a class="nav-link text-white" aria-current="page" href="{{ url('/') }}"><span><x-fluentui-home-more-24 style="height: 25px; width: 25px;"/></span><br>Home</a>
+                        </li>
+                        <li class="nav-item my-auto">
+                            <a class="nav-link text-white" aria-current="page" href="{{ url('/food') }}"><span><x-fluentui-food-20 style="height: 25px; width: 25px;"/></span><br>{{ __('content.food') }}</a>
+                        </li>
+                        <li class="nav-item my-auto">
+                            <a class="nav-link text-white" aria-current="page" href="{{ url('/drink') }}"><span><x-fluentui-drink-wine-16 style="height: 25px; width: 25px;"/></span><br>{{ __('content.drink') }}</a>
+                        </li>
+                        <li class="nav-item dropdown my-auto">
+                            <a class="nav-link text-white" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span><x-fluentui-globe-24 style="height: 25px; width: 25px;"/></span><br>{{Config::get('languages')[App::getLocale()]['display']}}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (Config::get('languages') as $lang => $language)
+                                @if ($lang != App::getLocale())
+                                        <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="fi fi-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+                                @endif
+                            @endforeach
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                @else
                 <div class="row justify-content-center">
                     <div class="col-xxl-11">
                         <nav class="navbar navbar-expand-md navbar-light">
@@ -97,8 +124,9 @@
                         </nav>
                     </div>
                 </div>
+                @endmobile
             </div>
-            <main>
+            <main class="pb-5 mb-2">
                 @yield('content')
             </main>
         </div>
