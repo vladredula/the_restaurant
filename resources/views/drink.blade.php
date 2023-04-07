@@ -24,7 +24,7 @@
         <div class="col-xxl-11">
             <div class="tab-content">
                 @foreach ($categories as $id => $category)
-                <div class="tab-pane fade {{ $id == 0 ? 'active show' : '' }}" id="{{ $category['abbreviation'] }}" role="tabpanel" aria-labelledby="{{ $category['abbreviation'] }}-tab">
+                <div class="tab-pane fade py-2 {{ $id == 0 ? 'active show' : '' }}" id="{{ $category['abbreviation'] }}" role="tabpanel" aria-labelledby="{{ $category['abbreviation'] }}-tab">
                     <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-col-xl-3">
                     @php
                         $marker = 0;
@@ -35,8 +35,8 @@
                         <div class="col-sm-12">
                             <div class="col d-flex flex-wrap">
                         @endif
-                            <div class="col-12">
-                                <div class="d-grid pt-3">
+                            <div class="col-12 py-2">
+                                <div class="d-grid">
                                     <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}" data-bs-toggle="collapse" class="btn btn-dark text-start">{{ ($subcat == 'none' ? $category['name'] : $subcat ) }}</button>
                                 </div>
                                 <ul class="list-group list-group-flush collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
