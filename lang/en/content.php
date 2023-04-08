@@ -14,6 +14,7 @@ return [
     */
 
     'menu'       => 'Menu',
+    'home'       => 'Home',
     'food'       => 'Food',
     'drink'      => 'Drink',
     'food_menu'  => 'Food Menu',
