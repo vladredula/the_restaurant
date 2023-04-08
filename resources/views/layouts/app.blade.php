@@ -23,19 +23,29 @@
             <div class="container">
                 @mobile
                 <div class="fixed-bottom">
-                    <ul class="nav nav-pills nav-fill justify-content-center bg-dark">
+                    <ul class="nav nav-fill justify-content-center bg-dark">
                         <li class="nav-item my-auto">
-                            <a class="nav-link text-white" aria-current="page" href="{{ url('/') }}"><span><x-fluentui-home-more-24 style="height: 25px; width: 25px;"/></span><br>Home</a>
+                            <a class="nav-link text-white" aria-current="page" href="{{ url('/') }}">
+                                <span><x-fluentui-home-more-24 style="height: 25px; width: 25px;"/></span>
+                                <br>{{ __('content.home') }}
+                            </a>
                         </li>
                         <li class="nav-item my-auto">
-                            <a class="nav-link text-white" aria-current="page" href="{{ url('/food') }}"><span><x-fluentui-food-20 style="height: 25px; width: 25px;"/></span><br>{{ __('content.food') }}</a>
+                            <a class="nav-link text-white" aria-current="page" href="{{ url('/food') }}">
+                                <span><x-fluentui-food-20 style="height: 25px; width: 25px;"/></span>
+                                <br>{{ __('content.food') }}
+                            </a>
                         </li>
                         <li class="nav-item my-auto">
-                            <a class="nav-link text-white" aria-current="page" href="{{ url('/drink') }}"><span><x-fluentui-drink-wine-16 style="height: 25px; width: 25px;"/></span><br>{{ __('content.drink') }}</a>
+                            <a class="nav-link text-white" aria-current="page" href="{{ url('/drink') }}">
+                                <span><x-fluentui-drink-wine-16 style="height: 25px; width: 25px;"/></span>
+                                <br>{{ __('content.drink') }}
+                            </a>
                         </li>
                         <li class="nav-item dropdown my-auto">
                             <a class="nav-link text-white" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span><x-fluentui-globe-24 style="height: 25px; width: 25px;"/></span><br>{{Config::get('languages')[App::getLocale()]['display']}}
+                                <span><x-fluentui-globe-24 style="height: 25px; width: 25px;"/></span>
+                                <br>{{Config::get('languages')[App::getLocale()]['display']}}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach (Config::get('languages') as $lang => $language)
