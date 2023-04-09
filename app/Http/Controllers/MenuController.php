@@ -9,7 +9,7 @@ class MenuController extends Controller
 {
     public function __construct()
     {
-        if (!Browser::isMobile()) {
+        if (!Browser::isInApp()) {
             $this->middleware('auth');
         }
     }
