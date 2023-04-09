@@ -11,43 +11,7 @@
     </head>
     <body">
         <div class="container">
-            @mobile
-            <div class="fixed-bottom">
-                <ul class="nav nav-fill justify-content-center bg-dark" style="height: 70px">
-                    <li class="nav-item my-auto">
-                        <a class="nav-link text-white" aria-current="page" href="{{ url('/') }}">
-                            {{-- <span><x-fluentui-home-more-24 style="height: 30px; width: 30px;"/></span> --}}
-                            <br>{{ __('content.home') }}
-                        </a>
-                    </li>
-                    <li class="nav-item my-auto">
-                        <a class="nav-link text-white" aria-current="page" href="{{ url('/food') }}">
-                            {{-- <span><x-fluentui-food-20 style="height: 30px; width: 30px;"/></span> --}}
-                            <br>{{ __('content.food') }}
-                        </a>
-                    </li>
-                    <li class="nav-item my-auto">
-                        <a class="nav-link text-white" aria-current="page" href="{{ url('/drink') }}">
-                            {{-- <span><x-fluentui-drink-wine-16 style="height: 30px; width: 30px;"/></span> --}}
-                            <br>{{ __('content.drink') }}
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown my-auto">
-                        <a class="nav-link text-white" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{-- <span><x-fluentui-globe-24 style="height: 30px; width: 30px;"/></span> --}}
-                            <br>
-                            {{Config::get('languages')[App::getLocale()]['display']}}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @foreach (Config::get('languages') as $lang => $language)
-                            @if ($lang != App::getLocale())
-                                    <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="fi fi-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
-                            @endif
-                        @endforeach
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            @browser('isInApp')
             @else
             <div class="row justify-content-center">
                 <div class="col-xxl-11">
@@ -109,7 +73,7 @@
                     </nav>
                 </div>
             </div>
-            @endmobile
+            @endbrowser
         </div>
         <main>
             <div class="container">
@@ -117,9 +81,12 @@
                     <div class="text-center">
                         <p class="fs-3 fst-italic pt-5 mb-0">{{ __('messages.welcome') }}</p>
                         <h1 class="display-1" style="font-family: 'Lobster';">{{ config('app.name') }}</h1>
+                        @browser('isInApp')
+                        @else
                         <a class="text-decoration-none" href="{{ url('/menu') }}">
                             <button class="btn btn-dark rounded-pill">{{ __('content.menu') }}</button>
                         </a>
+                        @endbrowser
                     </div>
                 </div>
             </div>
