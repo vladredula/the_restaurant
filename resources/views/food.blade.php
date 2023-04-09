@@ -61,7 +61,7 @@
                                                     </div>
                                                     <div class="card-footer text-muted text-end bg-light">
                                                         @foreach ($food['price'] as $size => $price)
-                                                            {{ $size != '1' ? __('content.'.strtolower($size)) : "" }} {{ ($price) }}円  
+                                                            {{ $size != '1' ? __('content.'.strtolower($size)) : "" }} {{ number_format($price) }}円  
                                                             @if (count($food['price']) > 1)
                                                                 <br>
                                                             @endif
