@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [MenuController::class, 'index'])->name('home');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/food', [ItemController::class, 'food'])->name('food');
-Route::get('/food/{category}', [ItemController::class, 'get_food'])->name('get_food');
-
-
 Route::get('/drink', [ItemController::class, 'drink'])->name('drink');
-Route::get('/drink/{category}', [ItemController::class, 'get_drink'])->name('get_drink');
 
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang-switch');
