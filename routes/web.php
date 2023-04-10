@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [MenuController::class, 'index'])->name('home');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/food', [ItemController::class, 'food'])->name('food');
 Route::get('/drink', [ItemController::class, 'drink'])->name('drink');
