@@ -19,5 +19,6 @@ return [
     'if_email_not_received' => 'If you did not receive the email',
     'click_here'            => 'click here to request another',
     'welcome'               => 'Welcome to',
+    'oops'                  => 'Something went wrong. Please Try again later.',
 
 ];

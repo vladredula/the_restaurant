@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use hisorange\BrowserDetect\Parser as Browser;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
 {
@@ -18,30 +18,43 @@ class ItemController extends Controller
 
     public function food()
     {
-        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/food');
-    
-        $jsonData = $response->json();
-
-        $items = $this->unmarshal($jsonData['Items']);
-        $items = $this->reconstruct($items);
-
+        $items      = $this->get_items('food');
         $categories = $this->get_category('F');
 
-        return view('food', compact('items', 'categories'));
+        if ($items && $categories) {
+            return view('food', compact('items', 'categories'));
+        } else {
+            return view('food')->with('error', __('messages.oops'));
+        }
     }
 
     public function drink()
     {
-        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/drink');
-    
-        $jsonData = $response->json();
-
-        $items = $this->unmarshal($jsonData['Items']);
-        $items = $this->reconstruct($items);
-
+        $items      = $this->get_items('drink');
         $categories = $this->get_category('D');
 
-        return view('drink', compact('items', 'categories'));
+        if ($items && $categories) {
+            return view('drink', compact('items', 'categories'));
+        } else {
+            return view('drink')->with('error', __('messages.oops'));
+        }
+    }
+
+    public function reconstruct($data)
+    {
+        $new_data = array();
+
+        foreach ($data as $item) {
+            $sub_cat = 'none';
+
+            if ($item['subcategory'] != '') {
+                $sub_cat = $item['subcategory'];
+            }
+
+            $new_data[$item['category']][$sub_cat][] = $item;
+        }
+
+        return $new_data;
     }
 
     public function unmarshal($jsonData)
@@ -57,8 +70,7 @@ class ItemController extends Controller
 
                 if ($new_value === true) {
                     $temp_data[$key] = "";
-                } 
-                else {
+                } else {
                     if ($key == "price") {
                         $temp = explode(",", $new_value);
 
@@ -81,35 +93,55 @@ class ItemController extends Controller
         return $new_data;
     }
 
-    public function reconstruct($data)
-    {
-        $new_data = array();
+    public function get_items($itemType) {
+        $url = 'https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/'.$itemType;
 
-        foreach ($data as $item) {
-            $sub_cat = 'none';
-
-            if ($item['subcategory'] != '') {
-                $sub_cat = $item['subcategory'];
+        try {
+            $response = Http::get($url);
+    
+            if ($response->status() != 200) {
+                throw new Exception($response->json()['message']);
             }
 
-            $new_data[$item['category']][$sub_cat][] = $item;
-        }
+            $jsonData = $response->json();
+    
+            $data = $this->unmarshal($jsonData['Items']);
+            $data = $this->reconstruct($data);
 
-        return $new_data;
+            return $data;
+
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+
+            return false;
+        }
     }
 
-    public function get_category($type = 'F')
+    public function get_category($itemType)
     {
-        $response = Http::get('https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/category/'.$type);
+        $url = 'https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/category/'.$itemType;
+
+        try {
+            $response = Http::get($url);
     
-        $jsonData = $response->json();
+            if ($response->status() != 200) {
+                throw new Exception($response->json()['message']);
+            }
+    
+            $jsonData = $response->json();
+    
+            $data = $this->unmarshal($jsonData['Items']);
+    
+            usort($data, function($a, $b) {
+                return $a['id'] - $b['id'];
+            });
+    
+            return $data;
 
-        $data = $this->unmarshal($jsonData['Items']);
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
 
-        usort($data, function($a, $b) {
-            return $a['id'] - $b['id'];
-        });
-
-        return $data;
+            return false;
+        }
     }
 }
