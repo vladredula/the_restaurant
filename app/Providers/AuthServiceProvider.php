@@ -4,6 +4,8 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use Kitar\Dynamodb\Model\AuthUserProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -19,8 +21,17 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        $this->registerPolicies();
+    
+        Auth::provider('dynamodb', function ($app, array $config) {
+            return new AuthUserProvider(
+                $app['hash'],
+                $config['model'],
+                $config['api_token_name'] ?? null,
+                $config['api_token_index'] ?? null
+            );
+        });
     }
 }
