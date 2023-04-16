@@ -8,6 +8,12 @@
                 <div class="card-header bg-light text-center">{{ __('form.reset_password') }}</div>
 
                 <div class="card-body">
+                    @if (session('error'))
+                        <div class="alert alert-warning text-center" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 

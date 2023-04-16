@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::post('password/email', [ForgotPasswordController::class, 'forgetPassword'])->name('password.forgot'); 
 Route::get('password/email/{token}', [ForgotPasswordController::class, 'resetPassword'])->name('password.reset');
-Route::post('password/confirm', [ResetPasswordController::class, 'submit'])->name('password.update');
+Route::post('password/confirm', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 Route::get('/home', [MenuController::class, 'index'])->name('home');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');

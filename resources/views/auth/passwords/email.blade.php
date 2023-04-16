@@ -9,12 +9,17 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success text-center" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-warning text-center" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('password.forgot') }}">
                         @csrf
 
                         <div class="row mb-3">
