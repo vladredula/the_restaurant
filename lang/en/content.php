@@ -17,6 +17,7 @@ return [
     'home'       => 'Home',
     'food'       => 'Food',
     'drink'      => 'Drink',
+    'view_menu'  => 'View Menu',
     'food_menu'  => 'Food Menu',
     'drink_menu' => 'Drink Menu',
     'half'       => 'Half size:',
@@ -30,5 +31,20 @@ return [
     'l'          => 'L:',
     '1p'         => '1 Piece:',
     '2p'         => '2 Pieces:',
+    'about'      => 'About',
+    'contact'    => 'Contact Us',
+    'lorem'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis consequuntur ex voluptates perspiciatis omnis unde minima expedita.',
+    
+    // footer
+    'open_hour'  => 'Opening Hours',
+    'mon_to_fri' => 'Monday to Friday',
+    'contact_i'  => 'Contact Info',
+    'address'    => 'Address',
+    'address_i'  => 'Tokyo, Japan',
+    'telephone'  => 'Telephone',
+    'email'      => 'Email',
+    'quick_link' => 'Quick Links',
+    'terms'      => 'Terms of Use',
+    'disclaimer' => 'Disclaimer',
 
 ];
