@@ -16,94 +16,164 @@
             h1{
                 text-shadow: 1px 1px 2px #3f3f3f;
             }
+
+            .back-text {
+                z-index: -1;
+                line-height: 1;
+                left: 50%;
+                margin-top: -60px;
+                transform: translateX(-50%);
+                font-weight: 800;
+                font-size: 200px;
+                position: absolute;
+                width: 100%;
+                color: #ededed;
+                text-transform: uppercase;
+            }
+
+            ion-icon {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-weight: 600;
+                color: white;
+            }
         </style>
     </head>
     <body>
         <div id="app">
-            <div class="container">
-                @browser('isInApp')
-                @else
-                <div class="row justify-content-center">
-                    <div class="col-xxl-11">
-                        <nav class="navbar navbar-expand-md navbar-light">
-                            <div class="container-fluid">
-                                <div class="d-flex">
-                                    <a class="navbar-brand fs-4" href="{{ url('/') }}" style="font-family: 'Lobster'">{{ config('app.name') }}</a>
-                                    @if (strpos(url()->current(), 'food'))
-                                        <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">{{ __('content.food_menu') }}</p>
-                                    @elseif (strpos(url()->current(), 'drink'))
-                                        <p class="mt-2 ps-3 pt-1 fst-italic" style="border-left: 1px solid;">{{ __('content.drink_menu') }}</p>
-                                    @endif
-                                </div>
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarText">
-                                    <ul class="navbar-nav ms-auto">
-                                        <!-- Authentication Links -->
-                                        @guest
+            @browser('isInApp')
+            @else
+            <header id="banner" style="padding-top: 30px">
+                <nav class="navbar navbar-expand-md">
+                    <div class="container" style="max-width: 1140px;">
+                        <div class="d-flex">
+                            <a class="navbar-brand fs-3" href="{{ url('/') }}">{{ config('app.name') }}</a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav ms-auto">
+                                <!-- Authentication Links -->
+    
+                                <li class="nav-item pe-3">
+                                    <a class="nav-link" href="#">About</a>
+                                </li>
+                                <li class="nav-item pe-3">
+                                    <a class="nav-link" href="#">Contact Us</a>
+                                </li>
+                                @if (!strpos(url()->current(), 'food'))
+                                    <li class="nav-item">
+                                        <a class="btn btn-primary" href="{{ url('/food') }}">{{ __('content.food_menu') }}</a>
+                                    </li>
+                                @endif
+                                @if (!strpos(url()->current(), 'drink'))
+                                    <li class="nav-item">
+                                        <a class="btn btn-primary" href="{{ url('/drink') }}">{{ __('content.drink_menu') }}</a>
+                                    </li>
+                                @endif
+                                @guest
+                                    <li class="nav-item dropdown ps-3">
+                                        <a id="userDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <ion-icon name="person-outline"></ion-icon>
+                                        </a>
+    
+                                        <div class="dropdown-menu dropdown-menu-end bg-white" aria-labelledby="userDropdown">
                                             @if (Route::has('login'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('login') }}">{{ __('form.login') }}</a>
-                                                </li>
+                                                <a class="dropdown-item" href="{{ route('login') }}">{{ __('form.login') }}</a>
                                             @endif
-                
                                             @if (Route::has('register'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('form.register') }}</a>
-                                                </li>
+                                                <a class="dropdown-item" href="{{ route('register') }}">{{ __('form.register') }}</a>
                                             @endif
-                                        @else
-                                            @if (strpos(url()->current(), 'food'))
-                                            <li class="nav-item">
-                                                <a class="nav-link" aria-current="page" href="{{ url('/drink') }}">{{ __('content.drink') }}</a>
-                                            </li>
-                                            @elseif (strpos(url()->current(), 'drink'))
-                                            <li class="nav-item">
-                                                <a class="nav-link" aria-current="page" href="{{ url('/food') }}">{{ __('content.food') }}</a>
-                                            </li>
-                                            @endif
-                                            <li class="nav-item dropdown">
-                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                    {{ Auth::user()->name }}
-                                                </a>
-                
-                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                                        {{ __('form.logout') }}
-                                                    </a>
-                
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                        @csrf
-                                                    </form>
-                                                </div>
-                                            </li>
-                                        @endguest
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="fi fi-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
+                                        </div>
+                                    </li>
+                                @else
+                                    <li class="nav-item dropdown ps-3">
+                                        <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <ion-icon name="person"></ion-icon>
+                                        </a>
+        
+                                        <div class="dropdown-menu dropdown-menu-end bg-white;" aria-labelledby="navbarDropdown">
+                                            <h5 class="dropdown-header">{{ Auth::user()->name }}</h5>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('form.logout') }}
                                             </a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            @foreach (Config::get('languages') as $lang => $language)
-                                                @if ($lang != App::getLocale())
-                                                        <a class="dropdown-item" href="{{ route('lang-switch', $lang) }}"><span class="fi fi-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
-                                                @endif
-                                            @endforeach
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                                <li class="nav-item dropdown ps-3">
+                                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <ion-icon name="language"></ion-icon>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end bg-white" aria-labelledby="navbarDropdownMenuLink">
+                                    @foreach (Config::get('languages') as $lang => $language)
+                                        @if ($lang != App::getLocale())
+                                                <a class="dropdown-item" href="{{ route('lang-switch', $lang) }}"><span class="fi fi-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+                                        @endif
+                                    @endforeach
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                @endbrowser
-            </div>
-            <main>
+                </nav>
+            </header>
+            @endbrowser
+            <main style="min-height: 100vh;">
                 @yield('content')
             </main>
+            <footer class="bg-dark">
+                <div class="container" style="max-width: 1140px;">
+                    <div class="row pt-5">
+                        <div class="col-md-4 mb-5">
+                            <h3>{{ __('content.about') }}</h3>
+                            <p class="mb-5 text-light">{{ __('content.lorem') }}</p>
+                        </div>
+                        <div class="col-md-5 mb-5">
+                            <div class="mb-5">
+                                <h3>{{ __('content.open_hour') }}</h3>
+                                <p class="text-light"><strong class="d-block">{{ __('content.mon_to_fri') }}</strong> 10AM - 07PM</p>
+                            </div>
+                            <div>
+                                <h3>{{ __('content.contact_i') }}</h3>
+                                <ul class="list-unstyled footer-link text-light">
+                                    <li class="d-block mb-3">
+                                        <span class="d-block">{{ __('content.address') }}:</span>
+                                        <span class="text-white">{{ __('content.address_i') }}</span>
+                                    </li>
+                                    <li class="d-block mb-3">
+                                        <span class="d-block">{{ __('content.telephone') }}:</span>
+                                        <span class="text-white">+81 80 1234 5678</span>
+                                    </li>
+                                    <li class="d-block mb-3">
+                                        <span class="d-block">{{ __('content.email') }}:</span>
+                                        <span class="text-white">vdredula@gmail.com</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-5">
+                            <h3>{{ __('content.quick_link') }}</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><a class="text-decoration-none" href="#">{{ __('content.terms') }}</a></li>
+                                <li class="mb-3"><a class="text-decoration-none" href="#">{{ __('content.disclaimer') }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        
+        {{-- Ionic icons --}}
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         </div>
     </body>
 </html>

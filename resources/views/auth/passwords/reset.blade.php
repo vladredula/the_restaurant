@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-light text-center">{{ __('form.reset_password') }}</div>
+                <div class="card-header bg-dark text-center text-white">{{ __('form.reset_password') }}</div>
 
                 <div class="card-body">
                     @if (session('error'))
