@@ -2,30 +2,30 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Open Sans', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 
-$light:      #d8e9e7;
-$dark:       #140916;
-$primary:    #29435f;
-$secondary:  #308898;
-$info:       #eaa725;
-$success:    #10aa5f;
-$warning:    #e6cc0f;
-$danger:     #f70a06;
+$white: #ffffff;
+$light:      #ededed;
+$dark:       #151a20;
+$primary:    #c22a35;
+$secondary:  #605954;
+$info:       #357b9a;
+$success:    #5b9821;
+$warning:    #fdbc60;
+$danger:     #ea1465;
 
-$theme-colors: (
-    "light":      #d8e9e7,
-    "dark":       #140916,
-    "primary":    #29435f,
-    "secondary":  #308898,
-    "info":       #eaa725,
-    "success":    #10aa5f,
-    "warning":    #e6cc0f,
-    "danger":     #f70a06,
-);
+// $light:      #cddddb;
+// $dark:       #140916;
+// $primary:    #29435f;
+// $secondary:  #308898;
+// $info:       #eaa725;
+// $success:    #10aa5f;
+// $warning:    #e6cc0f;
+// $danger:     #f70a06;
+
 
 // $light:      #d7deee;
 // $dark:       #191938;
@@ -36,30 +36,30 @@ $theme-colors: (
 // $warning:    #e0c716;
 // $danger:     #ee0f09;
 
-// $theme-colors: (
-//     "light":     $light,
-//     "dark":      $dark,
-//     "primary":   $primary,
-//     "secondary": $secondary,
-//     "info":      $info,
-//     "success":   $success,
-//     "warning":   $warning,
-//     "danger":    $danger,
-// );
+$theme-colors: (
+    "light":     $light,
+    "dark":      $dark,
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
+);
 
 $border-radius: 0;
 
 // nav
-$nav-link-color: $dark;
-$nav-link-hover-color: $secondary;
+$nav-link-color: $white;
+$nav-link-hover-color: $primary;
 
-$nav-tabs-border-radius: 50rem;
-$nav-pills-border-radius: 50rem;
-$nav-pills-link-active-bg: $dark;
+// $nav-tabs-border-radius: 50rem;
+// $nav-pills-border-radius: 50rem;
+// $nav-pills-link-active-bg: $dark;
 
 // carousel
-$carousel-transition-duration: .6s;
-$carousel-transition: transform $carousel-transition-duration none;
+// $carousel-transition-duration: .6s;
+// $carousel-transition: transform $carousel-transition-duration none;
 
 // card
 $card-border-width: 0;
