@@ -49,7 +49,7 @@
                 <nav class="navbar navbar-expand-md">
                     <div class="container" style="max-width: 1140px;">
                         <div class="d-flex">
-                            <a class="navbar-brand fs-3" href="{{ url('/') }}">{{ config('app.name') }}</a>
+                            <a class="navbar-brand fs-2" href="{{ url('/') }}" style="font-family: Lobster;">{{ config('app.name') }}</a>
                         </div>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
