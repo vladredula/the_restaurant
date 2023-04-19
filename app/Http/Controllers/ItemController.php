@@ -51,43 +51,17 @@ class ItemController extends Controller
                 $sub_cat = $item['subcategory'];
             }
 
-            $new_data[$item['category']][$sub_cat][] = $item;
-        }
+            $temp = explode(",", $item['price']);
 
-        return $new_data;
-    }
-
-    public function unmarshal($jsonData)
-    {
-        $new_data = [];
-
-        foreach ($jsonData as $data) {
-            $temp_data = array();
-
-            foreach ($data as $key => $value) {
-                $value_key = array_keys($value)[0];
-                $new_value = $value[$value_key];
-
-                if ($new_value === true) {
-                    $temp_data[$key] = "";
-                } else {
-                    if ($key == "price") {
-                        $temp = explode(",", $new_value);
-
-                        $prices = [];
-                        foreach ($temp as $price) {
-                            $price = explode(":", $price);
-                            $prices[$price[0]] = $price[1];
-                        }
-
-                        $new_value = $prices;
-                    }
-
-                    $temp_data[$key] = $new_value;
-                }
+            $prices = [];
+            foreach ($temp as $price) {
+                $price = explode(":", $price);
+                $prices[$price[0]] = $price[1];
             }
-            
-            $new_data[] = $temp_data;
+
+            $item['price'] = $prices;
+
+            $new_data[$item['category']][$sub_cat][] = $item;
         }
 
         return $new_data;
@@ -104,9 +78,8 @@ class ItemController extends Controller
             }
 
             $jsonData = $response->json();
-    
-            $data = $this->unmarshal($jsonData['Items']);
-            $data = $this->reconstruct($data);
+
+            $data = $this->reconstruct($jsonData[$itemType]);
 
             return $data;
 
@@ -130,7 +103,7 @@ class ItemController extends Controller
     
             $jsonData = $response->json();
     
-            $data = $this->unmarshal($jsonData['Items']);
+            $data = $jsonData['categories'];
     
             usort($data, function($a, $b) {
                 return $a['id'] - $b['id'];

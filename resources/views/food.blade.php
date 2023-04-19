@@ -14,7 +14,7 @@
         <ul class="nav nav-pills nav-fill nav-justified bg-dark">
             @foreach ($categories as $id => $category)
                 <li class="nav-item mx-auto">
-                    <button class="nav-link {{ $id == 0 ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#{{ $category['abbreviation'] }}" type="button" role="tab" aria-selected="{{ $id == 0 ? 'true' : 'false' }}">
+                    <button class="nav-link {{ $id == 0 ? 'active' : '' }}" data-bs-toggle="pill" data-bs-target="#{{ $category['abbr'] }}" type="button" role="tab" aria-selected="{{ $id == 0 ? 'true' : 'false' }}">
                         {{ strtoupper($category['name']) }}
                     </button>
                 </li>
@@ -22,14 +22,14 @@
         </ul>
         <div class="tab-content">
             @foreach ($categories as $id => $category)
-                <div class="tab-pane {{ ($id == 0) ? 'active show' : '' }}" id="{{ $category['abbreviation'] }}" role="tabpanel" aria-labelledby="{{ $category['abbreviation'] }}-tab">
-                    <img src="{{ $category['img_url'] }}" class="w-100" alt="{{ $category['abbreviation'] }}" />
+                <div class="tab-pane {{ ($id == 0) ? 'active show' : '' }}" id="{{ $category['abbr'] }}" role="tabpanel" aria-labelledby="{{ $category['abbr'] }}-tab">
+                    <img src="{{ $category['img_url'] }}" class="w-100" alt="{{ $category['abbr'] }}" />
                     <nav class="navbar">
                         <ul class="nav nav-pills mx-auto py-2">
                             @php
                                 $index = 0;
                             @endphp
-                            @foreach ($items[$category['abbreviation']] as $subcategory => $item)
+                            @foreach ($items[$category['abbr']] as $subcategory => $item)
                                 @php
                                     $subcat = preg_replace('/[^a-zA-Z]/', '', $subcategory);
                                 @endphp
@@ -47,7 +47,7 @@
                     @php
                         $index = 0;
                     @endphp
-                    @foreach ($items[$category['abbreviation']] as $subcategory => $item)
+                    @foreach ($items[$category['abbr']] as $subcategory => $item)
                         @php
                             $subcat = preg_replace('/[^a-zA-Z]/', '', $subcategory);
                         @endphp

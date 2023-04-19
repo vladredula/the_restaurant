@@ -14,7 +14,7 @@
         <ul class="nav nav-pills nav-fill bg-dark">
         @foreach ($categories as $id => $category)
             <li class="nav-item mx-auto">
-                <button class="nav-link rounded-0 {{ $id == 0 ? 'active' : '' }}" id="{{ $category['abbreviation'] }}-tab" data-bs-toggle="pill" data-bs-target="#{{ $category['abbreviation'] }}" type="button" role="tab" aria-selected="{{ $id == 0 ? 'true' : 'false' }}">{{ strtoupper($category['name']) }}</button>
+                <button class="nav-link rounded-0 {{ $id == 0 ? 'active' : '' }}" id="{{ $category['abbr'] }}-tab" data-bs-toggle="pill" data-bs-target="#{{ $category['abbr'] }}" type="button" role="tab" aria-selected="{{ $id == 0 ? 'true' : 'false' }}">{{ strtoupper($category['name']) }}</button>
             </li>
         @endforeach
         </ul>
@@ -27,13 +27,13 @@
         </div>
         <div class="tab-content">
             @foreach ($categories as $id => $category)
-                <div class="tab-pane fade py-2 {{ $id == 0 ? 'active show' : '' }}" id="{{ $category['abbreviation'] }}" role="tabpanel" aria-labelledby="{{ $category['abbreviation'] }}-tab">
+                <div class="tab-pane fade py-2 {{ $id == 0 ? 'active show' : '' }}" id="{{ $category['abbr'] }}" role="tabpanel" aria-labelledby="{{ $category['abbr'] }}-tab">
                     <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-col-xl-3">
                         @php
                             $marker = 0;
-                            $useFlex = count($items[$category['abbreviation']]) > 4 ? true : false;
+                            $useFlex = count($items[$category['abbr']]) > 4 ? true : false;
                         @endphp
-                        @foreach ($items[$category['abbreviation']] as $subcat => $item)
+                        @foreach ($items[$category['abbr']] as $subcat => $item)
                             @if ($useFlex && $marker % 2 == 0)
                                 <div class="col-sm-12">
                                     <div class="col d-flex flex-wrap">
