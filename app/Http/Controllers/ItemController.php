@@ -18,8 +18,8 @@ class ItemController extends Controller
 
     public function food()
     {
-        $items      = $this->get_items('food');
-        $categories = $this->get_category('F');
+        $items = $this->get_items('food');
+        $categories = $this->get_category('food');
 
         if ($items && $categories) {
             return view('food', compact('items', 'categories'));
@@ -30,8 +30,8 @@ class ItemController extends Controller
 
     public function drink()
     {
-        $items      = $this->get_items('drink');
-        $categories = $this->get_category('D');
+        $items = $this->get_items('drink');
+        $categories = $this->get_category('drink');
 
         if ($items && $categories) {
             return view('drink', compact('items', 'categories'));
@@ -68,7 +68,7 @@ class ItemController extends Controller
     }
 
     public function get_items($itemType) {
-        $url = 'https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/items/'.$itemType;
+        $url = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/item/'.$itemType;
 
         try {
             $response = Http::get($url);
@@ -79,20 +79,20 @@ class ItemController extends Controller
 
             $jsonData = $response->json();
 
-            $data = $this->reconstruct($jsonData[$itemType]);
+            $data = $this->reconstruct($jsonData['items']);
 
             return $data;
 
         } catch (Exception $e) {
             Log::error($e->getMessage());
-
-            return false;
         }
+
+        return false;
     }
 
     public function get_category($itemType)
     {
-        $url = 'https://3vflwnsyek.execute-api.ap-northeast-1.amazonaws.com/prod/category/'.$itemType;
+        $url = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/category/type/'.$itemType;
 
         try {
             $response = Http::get($url);
@@ -113,8 +113,8 @@ class ItemController extends Controller
 
         } catch (Exception $e) {
             Log::error($e->getMessage());
-
-            return false;
         }
+
+        return false;
     }
 }
