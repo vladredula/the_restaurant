@@ -59,10 +59,10 @@
                                 <!-- Authentication Links -->
     
                                 <li class="nav-item pe-3">
-                                    <a class="nav-link" href="#">About</a>
+                                    <a class="nav-link" href="#">{{ __('content.about') }}</a>
                                 </li>
                                 <li class="nav-item pe-3">
-                                    <a class="nav-link" href="#">Contact Us</a>
+                                    <a class="nav-link" href="#">{{ __('content.contact') }}</a>
                                 </li>
                                 @if (!strpos(url()->current(), 'food'))
                                     <li class="nav-item">
