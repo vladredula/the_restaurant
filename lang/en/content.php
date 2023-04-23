@@ -55,7 +55,7 @@ return [
     'favorites' => 'Favorites',
     'tropical' => 'Tropical',
     'fridaystm cocktails' => 'Fridays TM Cocktails',
-    'see what’s shakin’' => 'See What\'s Shakin\'',
+    'see what\'s shakin\'' => 'See What\'s Shakin\'',
     'tequila' => 'Tequila',
     'vodka' => 'Vodka',
     'rum' => 'Rum',
@@ -101,6 +101,6 @@ return [
     'terms'      => 'Terms of Use',
     'disclaimer' => 'Disclaimer',
 
-    'lorem'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis consequuntur ex voluptates perspiciatis omnis unde minima expedita.',
+    'lorem'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et dolor blanditiis consequuntur ex voluptates.',
 
 ];

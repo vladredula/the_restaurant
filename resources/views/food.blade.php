@@ -48,7 +48,7 @@
                                             type="button" 
                                             role="tab" 
                                             aria-controls="{{ $subcat }}">
-                                                {{ strtoupper(__('content.'.($subcat != 'none' ? $subcategory : $category['name']))) }}
+                                                {{ strtoupper(__('content.'.$subcategory)) }}
                                         </button>
                                     </li>
                                     @php
@@ -65,7 +65,7 @@
                                 $subcat = preg_replace('/[^a-zA-Z]/', '', $subcategory);
                             @endphp
                             <div class="tab-content">
-                                <div class="tab-pane fade {{ ($subcat == 'none' || $index == 0) ? 'active show' : '' }}" 
+                                <div class="tab-pane fade {{ ($index == 0) ? 'active show' : '' }}" 
                                     id="{{ $subcat }}" 
                                     role="tabpanel" 
                                     aria-labelledby="{{ $subcat }}-tab">

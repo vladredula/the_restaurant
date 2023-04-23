@@ -44,20 +44,23 @@
                                 $marker = 0;
                                 $useFlex = count($items[$category['abbr']]) > 4 ? true : false;
                             @endphp
-                            @foreach ($items[$category['abbr']] as $subcat => $item)
+                            @foreach ($items[$category['abbr']] as $subCategory => $item)
+                                @php
+                                    $id = preg_replace('/[^a-zA-Z]/', '', $subCategory);
+                                @endphp
                                 @if ($useFlex && $marker % 2 == 0)
                                     <div class="col-sm-12">
                                         <div class="col d-flex flex-wrap">
                                 @endif
                                 <div class="col-12 py-2">
                                     <div class="d-grid">
-                                        <button data-bs-target="#{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}" 
+                                        <button data-bs-target="#{{ $id }}" 
                                             data-bs-toggle="collapse" 
                                             class="btn btn-dark text-start">
-                                                {{ __('content.'.($subcat == 'none' ? $category['name'] : $subcat)) }}
+                                                {{ strtoupper(__('content.'.$subCategory)) }}
                                         </button>
                                     </div>
-                                    <ul class="list-group list-group-flush collapse show" id="{{ preg_replace('/[^a-zA-Z]/', '', $subcat) }}">
+                                    <ul class="list-group list-group-flush collapse show" id="{{ $id }}">
                                         @foreach ($item as $drink)
                                         <li class="list-group-item bg-light d-flex flex-column">
                                             <div>

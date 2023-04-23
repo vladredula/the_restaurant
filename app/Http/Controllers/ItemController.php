@@ -45,11 +45,8 @@ class ItemController extends Controller
         $new_data = array();
 
         foreach ($data as $item) {
-            $sub_cat = 'none';
-
-            if ($item['subcategory'] != '') {
-                $sub_cat = $item['subcategory'];
-            }
+            $category = $item['category'];
+            $subCategory = $item['subcategory'];
 
             $temp = explode(",", $item['price']);
 
@@ -61,7 +58,7 @@ class ItemController extends Controller
 
             $item['price'] = $prices;
 
-            $new_data[$item['category']][$sub_cat][] = $item;
+            $new_data[$category][$subCategory][] = $item;
         }
 
         return $new_data;
