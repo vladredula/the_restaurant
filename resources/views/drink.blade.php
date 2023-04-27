@@ -5,26 +5,26 @@
     <p class="display-4 text-center" style="font-weight: 800;">{{ __('content.drink_menu') }}</p>
     <p class="back-text text-center">{{ __('content.drink') }}</p>
 </div>
-<div class="container mt-5" style="max-width: 1140px;">
+<div class="container mt-4" style="max-width: 1140px;">
     @if(isset($error))
         <div class="alert alert-warning text-center">
             {{ $error }}
         </div>
     @else
         <ul class="nav nav-pills nav-fill bg-dark">
-        @foreach ($categories as $id => $category)
-            <li class="nav-item mx-auto">
-                <button class="nav-link rounded-0 {{ $id == 0 ? 'active' : '' }}" 
-                    id="{{ $category['abbr'] }}-tab" 
-                    data-bs-toggle="pill" 
-                    data-bs-target="#{{ $category['abbr'] }}" 
-                    type="button" 
-                    role="tab" 
-                    aria-selected="{{ $id == 0 ? 'true' : 'false' }}">
-                        {{ strtoupper(__('content.'.$category['name'])) }}
-                </button>
-            </li>
-        @endforeach
+            @foreach ($categories as $id => $category)
+                <li class="nav-item mx-auto">
+                    <button class="nav-link rounded-0 {{ $id == 0 ? 'active' : '' }}" 
+                        id="{{ $category['abbr'] }}-tab" 
+                        data-bs-toggle="pill" 
+                        data-bs-target="#{{ $category['abbr'] }}" 
+                        type="button" 
+                        role="tab" 
+                        aria-selected="{{ $id == 0 ? 'true' : 'false' }}">
+                            {{ strtoupper(__('content.'.$category['name'])) }}
+                    </button>
+                </li>
+            @endforeach
         </ul>
         <div id="drinkCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">

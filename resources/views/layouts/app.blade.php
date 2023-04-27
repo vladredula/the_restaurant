@@ -26,7 +26,7 @@
                 margin-top: -60px;
                 transform: translateX(-50%);
                 font-weight: 800;
-                font-size: 200px;
+                font-size: 110px;
                 position: absolute;
                 width: 100%;
                 color: #ededed;

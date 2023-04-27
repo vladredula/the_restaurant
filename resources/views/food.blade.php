@@ -5,17 +5,18 @@
     <p class="display-4 text-center" style="font-weight: 800;">{{ __('content.food_menu') }}</p>
     <p class="back-text text-center">{{ __('content.food') }}</p>
 </div>
-<div class="container mt-5" style="max-width: 1140px;">
+<div class="container mt-4" style="max-width: 1140px;">
     @if(isset($error))
         <div class="alert alert-warning text-center">
             {{ $error }}
         </div>
     @else
-        <ul class="nav nav-pills nav-fill nav-justified bg-dark">
+        <ul class="nav nav-pills nav-fill bg-dark">
             @foreach ($categories as $id => $category)
-                <li class="nav-item mx-auto">
-                    <button class="nav-link {{ $id == 0 ? 'active' : '' }}" 
-                        data-bs-toggle="pill" data-bs-target="#{{ $category['abbr'] }}" 
+                <li class="nav-item mx-auto" style="min-width: 100px;">
+                    <button class="nav-link rounded-0 {{ $id == 0 ? 'active' : '' }}" 
+                        data-bs-toggle="pill" 
+                        data-bs-target="#{{ $category['abbr'] }}" 
                         type="button" 
                         role="tab"
                         aria-selected="{{ $id == 0 ? 'true' : 'false' }}">
@@ -40,8 +41,8 @@
                                     @php
                                         $subcat = preg_replace('/[^a-zA-Z]/', '', $subcategory);
                                     @endphp
-                                    <li class="nav-item bg-secondary mx-auto">
-                                        <button class="nav-link {{ $index == 0 ? 'active' : '' }}" 
+                                    <li class="nav-item bg-secondary">
+                                        <button class="nav-link fw-light {{ $index == 0 ? 'active' : '' }}" 
                                             id="{{ $subcat }}-tab" 
                                             data-bs-toggle="pill" 
                                             data-bs-target="#{{ $subcat }}" 

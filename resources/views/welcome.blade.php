@@ -68,7 +68,7 @@
                 margin-top: -60px;
                 transform: translateX(-50%);
                 font-weight: 800;
-                font-size: 200px;
+                font-size: 125px;
                 position: absolute;
                 width: 100%;
                 color: #ededed;
@@ -212,7 +212,7 @@
             <div class="container">
                 <p class="display-4 text-center" style="font-weight: 800;">{{ __('content.menu') }}</p>
                 <p class="back-text text-center">{{ __('content.menu') }}</p>
-                <div class="row mt-5 pt-5">
+                <div class="row mt-5 pt-3">
                     <div id="menu-item" class="col-lg-6">
                         <a class="text-decoration-none" href="{{ url('/food') }}">
                             <img src="https://images.unsplash.com/photo-1601894087104-0c18bc34dbd6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1365&q=80" alt="">
