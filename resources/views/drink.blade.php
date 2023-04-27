@@ -71,7 +71,7 @@
                                             @endif
                                             <div class="text-muted text-end mt-auto">
                                             @foreach ($drink['price'] as $size => $price)  
-                                                {{ $size != '1' ? __('content.'.$size) : "" }} {{ number_format($price) }}円 
+                                                &nbsp;&nbsp;{{ $size != '1' ? __('content.'.$size) : "" }} {{ number_format($price) }}円
                                             @endforeach
                                             </div>
                                         </li>
