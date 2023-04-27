@@ -12,6 +12,8 @@
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+        <link rel="shortcut icon" href="{{ asset('images/R.png') }}">
+
         <style>
             h1{
                 text-shadow: 1px 1px 2px #3f3f3f;

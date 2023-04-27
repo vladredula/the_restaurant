@@ -8,6 +8,9 @@
 
         <!-- Styles -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+        <link rel="shortcut icon" href="{{ asset('images/R.png') }}">
+
         <style>
             #banner {
                 padding: 30px 0;
@@ -74,6 +77,8 @@
         </style>
     </head>
     <body">
+        @browser('isInApp')
+        @else
         <header id="banner">
             <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
                 <div class="container" style="max-width: 1140px;">
@@ -155,6 +160,7 @@
                 </div>
             </nav>
         </header>
+        @endif
         <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
