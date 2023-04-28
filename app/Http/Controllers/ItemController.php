@@ -9,40 +9,53 @@ use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
 {
+
+    private $items = false;
+    private $categories = false;
+
     public function __construct()
     {
-        if (!Browser::isInApp()) {
-            $this->middleware('auth');
-        }
+        $this->middleware('auth');
     }
 
     public function food()
     {
-        $items = $this->get_items('food');
-        $categories = $this->get_category('food');
+        $this->get_items('food');
+        $this->get_category('food');
 
-        if ($items && $categories) {
-            return view('food', compact('items', 'categories'));
-        } else {
+        if ($this->hasErrors()) {
             return view('food')->with('error', __('messages.oops'));
+        } else {
+            return view('food', [
+                'items' => $this->items,
+                'categories' => $this->categories
+            ]);
         }
     }
 
     public function drink()
     {
-        $items = $this->get_items('drink');
-        $categories = $this->get_category('drink');
+        $this->get_items('drink');
+        $this->get_category('drink');
 
-        if ($items && $categories) {
-            return view('drink', compact('items', 'categories'));
-        } else {
+        if ($this->hasErrors()) {
             return view('drink')->with('error', __('messages.oops'));
+        } else {
+            return view('drink', [
+                'items' => $this->items,
+                'categories' => $this->categories
+            ]);
         }
+    }
+
+    public function hasErrors()
+    {
+        return $this->items && $this->categories ? false : true;
     }
 
     public function reconstruct($data)
     {
-        $new_data = array();
+        $newData = array();
 
         foreach ($data as $item) {
             $category = $item['category'];
@@ -58,60 +71,57 @@ class ItemController extends Controller
 
             $item['price'] = $prices;
 
-            $new_data[$category][$subCategory][] = $item;
+            $newData[$category][$subCategory][] = $item;
         }
 
-        return $new_data;
+        $this->items = $newData;
     }
 
-    public function get_items($itemType) {
-        $url = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/item/'.$itemType;
+    public function get_items($itemType)
+    {
+        $url = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/item/' . $itemType;
 
         try {
             $response = Http::get($url);
-    
+
             if ($response->status() != 200) {
                 throw new Exception($response->json()['message']);
             }
 
             $jsonData = $response->json();
 
-            $data = $this->reconstruct($jsonData['items']);
+            if ($jsonData == NULL) {
+                throw new Exception('No items received.');
+            }
 
-            return $data;
-
+            $this->reconstruct($jsonData['items']);
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }
-
-        return false;
     }
 
     public function get_category($itemType)
     {
-        $url = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/category/type/'.$itemType;
+        $url = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/category/type/' . $itemType;
 
         try {
             $response = Http::get($url);
-    
+
             if ($response->status() != 200) {
                 throw new Exception($response->json()['message']);
             }
-    
+
             $jsonData = $response->json();
-    
+
             $data = $jsonData['categories'];
-    
-            usort($data, function($a, $b) {
+
+            usort($data, function ($a, $b) {
                 return $a['id'] - $b['id'];
             });
-    
-            return $data;
 
+            $this->categories = $data;
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }
-
-        return false;
     }
 }
