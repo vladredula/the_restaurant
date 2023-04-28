@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -27,8 +26,6 @@ Route::post('password/email', [ForgotPasswordController::class, 'forgetPassword'
 Route::get('password/email/{token}', [ForgotPasswordController::class, 'resetPassword'])->name('password.reset');
 Route::post('password/confirm', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::get('/home', [MenuController::class, 'index'])->name('home');
-Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/food', [ItemController::class, 'food'])->name('food');
 Route::get('/drink', [ItemController::class, 'drink'])->name('drink');
 
