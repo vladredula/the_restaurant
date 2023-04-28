@@ -58,8 +58,9 @@ class ItemController extends Controller
     }
 
     /**
-     * Determines if $items and $categories has data
-     * Returns false if either one has not been assigned data
+     * Determines if $items and $categories has data.
+     * Returns false if either one has not been assigned data.
+     * 
      * @return bool
      */
     public function canProceed()
@@ -68,9 +69,14 @@ class ItemController extends Controller
     }
 
     /**
-     * Returns a reconstruction of items sorted according to categories and subcategories
+     * Returns a reconstruction of items sorted according to categories and subcategories.
+     * 
      * @param array $data
      * @return array
+     *  ["category1" => [
+     *      "subcategory1" => [item1, item2],
+     *      "subcategory2" => [item3, item4]]
+     *  ]
      */
     public function reconstruct($data)
     {
@@ -80,6 +86,9 @@ class ItemController extends Controller
             $category = $item['category'];
             $subCategory = $item['subcategory'];
 
+            // $item['price'] contains string patterned like a dictionary.
+            // ex. "size1:price1,size2:price2"
+            // this string needs to be parsed into an array to ease usage.
             $temp = explode(",", $item['price']);
 
             $prices = [];
@@ -97,9 +106,10 @@ class ItemController extends Controller
     }
 
     /**
-     * Calls api to get items from dynamoDB
+     * Calls api to get items.
+     * Assigns retrieved data to $items.
      * 
-     * @param string $itemType defines the type of item to get
+     * @param string $itemType defines the type of item to get.
      * $itemType can only be 'food' or 'drink'
      */
     public function get_items($itemType)
@@ -126,10 +136,11 @@ class ItemController extends Controller
     }
 
     /**
-     * Calls api to get all the categories depending on $itemType
+     * Calls api to get all the categories depending on $itemType.
+     * Assigns retrieved data to $categories.
      * 
      * @param string $itemType
-     * $itemType can only be 'food' or 'drink'
+     * $itemType can only be 'food' or 'drink'.
      */
     public function get_category($itemType)
     {
