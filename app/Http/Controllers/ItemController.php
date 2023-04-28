@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use hisorange\BrowserDetect\Parser as Browser;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -16,44 +15,63 @@ class ItemController extends Controller
 
     public function __construct()
     {
+        // will require auth upon contruct
         $this->middleware('auth');
     }
 
+    /**
+     * Get Food items
+     * @return mixed
+     */
     public function food()
     {
         $this->get_items('food');
         $this->get_category('food');
 
-        if ($this->hasErrors()) {
-            return view('food')->with('error', __('messages.oops'));
-        } else {
+        if ($this->canProceed()) {
             return view('food', [
                 'items' => $this->items,
                 'categories' => $this->categories
             ]);
+        } else {
+            return view('food')->with('error', __('messages.oops'));
         }
     }
 
+    /**
+     * Get Drink items
+     * @return mixed
+     */
     public function drink()
     {
         $this->get_items('drink');
         $this->get_category('drink');
 
-        if ($this->hasErrors()) {
-            return view('drink')->with('error', __('messages.oops'));
-        } else {
+        if ($this->canProceed()) {
             return view('drink', [
                 'items' => $this->items,
                 'categories' => $this->categories
             ]);
+        } else {
+            return view('drink')->with('error', __('messages.oops'));
         }
     }
 
-    public function hasErrors()
+    /**
+     * Determines if $items and $categories has data
+     * Returns false if either one has not been assigned data
+     * @return bool
+     */
+    public function canProceed()
     {
-        return $this->items && $this->categories ? false : true;
+        return $this->items && $this->categories ? true : false;
     }
 
+    /**
+     * Returns a reconstruction of items sorted according to categories and subcategories
+     * @param array $data
+     * @return array
+     */
     public function reconstruct($data)
     {
         $newData = array();
@@ -75,9 +93,15 @@ class ItemController extends Controller
             $newData[$category][$subCategory][] = $item;
         }
 
-        $this->items = $newData;
+        return $newData;
     }
 
+    /**
+     * Calls api to get items from dynamoDB
+     * 
+     * @param string $itemType defines the type of item to get
+     * $itemType can only be 'food' or 'drink'
+     */
     public function get_items($itemType)
     {
         $resourseUrl = 'item/' . $itemType;
@@ -92,15 +116,21 @@ class ItemController extends Controller
             $jsonData = $response->json();
 
             if ($jsonData == NULL) {
-                throw new Exception('No items received.');
+                throw new Exception('No items found.');
             }
 
-            $this->reconstruct($jsonData['items']);
+            $this->items = $this->reconstruct($jsonData['items']);
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }
     }
 
+    /**
+     * Calls api to get all the categories depending on $itemType
+     * 
+     * @param string $itemType
+     * $itemType can only be 'food' or 'drink'
+     */
     public function get_category($itemType)
     {
         $resourseUrl = 'category/type/' . $itemType;
@@ -114,8 +144,13 @@ class ItemController extends Controller
 
             $jsonData = $response->json();
 
+            if ($jsonData == NULL) {
+                throw new Exception('No categories found.');
+            }
+
             $data = $jsonData['categories'];
 
+            // sorts the categories by thier 'id'
             usort($data, function ($a, $b) {
                 return $a['id'] - $b['id'];
             });
