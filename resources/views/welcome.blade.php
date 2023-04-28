@@ -11,70 +11,6 @@
 
         <link rel="shortcut icon" href="{{ asset('images/R.png') }}">
 
-        <style>
-            #banner {
-                padding: 30px 0;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-            }
-
-            .navbar {
-                z-index: 5;
-            }
-
-            #carouselExampleIndicators .carousel-item img {
-                object-fit: cover;
-                object-position: center;
-                overflow: hidden;
-                height: 100vh;
-                min-height: 667px;
-            }
-
-            #menu-item img {
-                object-fit: cover;
-                object-position: center;
-                overflow: hidden;
-                height: 50vh;
-                width: 100%;
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .carousel-caption {
-                top: 40%;
-                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-            }
-
-            ion-icon {
-                font-size: 24px;
-            }
-
-            h3 {
-                font-weight: 600;
-                color: white;
-            }
-
-            h1 {
-                font-weight: 800;
-                font-size: 50px;
-            }
-
-            .back-text {
-                z-index: -1;
-                line-height: 1;
-                left: 50%;
-                margin-top: -60px;
-                transform: translateX(-50%);
-                font-weight: 800;
-                font-size: 125px;
-                position: absolute;
-                width: 100%;
-                color: #ededed;
-                text-transform: uppercase;
-            }
-        </style>
     </head>
     <body">
         @browser('isInApp')
@@ -161,11 +97,11 @@
             </nav>
         </header>
         @endif
-        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div id="carouselBanner" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -199,11 +135,11 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>

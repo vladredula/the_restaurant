@@ -14,40 +14,12 @@
 
         <link rel="shortcut icon" href="{{ asset('images/R.png') }}">
 
-        <style>
-            h1{
-                text-shadow: 1px 1px 2px #3f3f3f;
-            }
-
-            .back-text {
-                z-index: -1;
-                line-height: 1;
-                left: 50%;
-                margin-top: -60px;
-                transform: translateX(-50%);
-                font-weight: 800;
-                font-size: 110px;
-                position: absolute;
-                width: 100%;
-                color: #ededed;
-                text-transform: uppercase;
-            }
-
-            ion-icon {
-                font-size: 24px;
-            }
-
-            h3 {
-                font-weight: 600;
-                color: white;
-            }
-        </style>
     </head>
     <body>
         <div id="app">
             @browser('isInApp')
             @else
-            <header id="banner" style="padding-top: 30px">
+            <header style="padding-top: 30px">
                 <nav class="navbar navbar-expand-md">
                     <div class="container" style="max-width: 1140px;">
                         <div class="d-flex">

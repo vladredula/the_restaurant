@@ -1,0 +1,60 @@
+.back-text {
+    z-index: -1;
+    line-height: 1;
+    left: 50%;
+    margin-top: -60px;
+    transform: translateX(-50%);
+    font-weight: 800;
+    font-size: 110px;
+    position: absolute;
+    width: 100%;
+    color: #ededed;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-weight: 600;
+    color: white;
+}
+
+
+#banner {
+    padding: 30px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+#carouselBanner .carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    height: 100vh;
+    min-height: 667px;
+}
+
+#menu-item img {
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    height: 50vh;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.carousel-caption {
+    top: 40%;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-caption h1 {
+    font-weight: 800;
+    font-size: 50px;
+}
+
+ion-icon {
+    font-size: 24px;
+}

@@ -1,7 +1,6 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 // Variables
 @import 'variables';
@@ -11,3 +10,6 @@
 
 // Flag Icon CSS
 @import "/node_modules/flag-icons/css/flag-icons.min.css";
+
+// Custom CSS
+@import "../css/app.css";
