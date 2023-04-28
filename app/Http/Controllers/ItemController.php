@@ -12,6 +12,7 @@ class ItemController extends Controller
 
     private $items = false;
     private $categories = false;
+    private $apiEndpoint = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/';
 
     public function __construct()
     {
@@ -79,10 +80,10 @@ class ItemController extends Controller
 
     public function get_items($itemType)
     {
-        $url = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/item/' . $itemType;
+        $resourseUrl = 'item/' . $itemType;
 
         try {
-            $response = Http::get($url);
+            $response = Http::get($this->apiEndpoint . $resourseUrl);
 
             if ($response->status() != 200) {
                 throw new Exception($response->json()['message']);
@@ -102,10 +103,10 @@ class ItemController extends Controller
 
     public function get_category($itemType)
     {
-        $url = 'https://ya398c21fc.execute-api.ap-northeast-1.amazonaws.com/prod/category/type/' . $itemType;
+        $resourseUrl = 'category/type/' . $itemType;
 
         try {
-            $response = Http::get($url);
+            $response = Http::get($this->apiEndpoint . $resourseUrl);
 
             if ($response->status() != 200) {
                 throw new Exception($response->json()['message']);
