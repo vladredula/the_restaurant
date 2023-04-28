@@ -73,7 +73,7 @@
                                         <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 d-flex flex-wrap justify-content-center">
                                             @foreach ($item as $food)
                                                 <div class="col mx-auto px-3 pb-4">
-                                                    <div class="card bg-light" style="min-width: 219px;">
+                                                    <div class="card bg-light" style="min-width: 229px;">
                                                         <div class="row g-0 h-100">
                                                             <div class="col-5 col-sm-12">
                                                                 <img src="{{ $food['imgUrl'] }}" class="card-img-top">
