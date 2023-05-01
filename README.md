@@ -21,6 +21,7 @@ In DynamoDB, create the following tables with the respective partition keys
 |-|-|
 | users | email (String) |
 | password_resets | email (String) |
+
 These tables will be used to store our users and password reset tokens.
 
 #### IAM user
