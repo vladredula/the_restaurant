@@ -10,10 +10,8 @@ The Restaurant is a web application that displays food and drinks menu extracted
 - Forgot Password (Send email password reset link)
 - English and Japanese Localization
 
-## DynamoDB as Database driver
-I am using [kitar/laravel-dynamodb](https://github.com/kitar/laravel-dynamodb) to setup a DynamoDB based Eloquent model for laravel. In this repo, the package is already setup and installed. For information about the installation and usage, visit [kitar/laravel-dynamodb](https://github.com/kitar/laravel-dynamodb#installation)
-
-### Implementation
+### DynamoDB as Database driver
+I am using [kitar/laravel-dynamodb](https://github.com/kitar/laravel-dynamodb) to setup a DynamoDB based Eloquent model for laravel. For information about the installation and usage, visit [kitar/laravel-dynamodb](https://github.com/kitar/laravel-dynamodb#installation).
 
 #### Table creation
 In DynamoDB, create the following tables with the respective partition keys
@@ -52,21 +50,33 @@ Create an IAM user to interact with DynamoDB and attach the policy below:
 }
 ```
 
-#### Configuration
-After creating the IAM user, create an access key and copy it to your `.env` file. Also update the `DB_CONNECTION` to `dynamodb`.
+### Installing the project
+
+Clone the repo locally:
 
 ```
-DB_CONNECTION=dynamodb
-...
+git clone https://github.com/vladredula/the_restaurant.git therestaurant
+cd therestaurant
+```
+
+Setup configuration:
+
+```
+cp .env.example .env
+```
+
+Open `.env` file and configure the `AWS_*`.
+
+```
 # AWS configurations
 AWS_ACCESS_KEY_ID="********************"
 AWS_SECRET_ACCESS_KEY="****************************************"
 AWS_DEFAULT_REGION="ap-northeast-1" 
 ```
 
-#### To send emails for password reset
-Update your `MAIL_*` variables. Generate an App signin password in gmail and paste to your `.env` file along with your email. 
+Update the `MAIL_*` variables. You can use any email service provider that you want but in this case we will use Gmail. Generate an [app password sign in](https://support.google.com/mail/answer/185833?hl=en) for your gmail and paste to your `.env` file along with your email. 
 ```
+# Mail configurations
 MAIL_DRIVER=smtp
 MAIL_HOST=smtp.googlemail.com
 MAIL_PORT=465
@@ -76,4 +86,43 @@ MAIL_ENCRYPTION=ssl
 MAIL_FROM_ADDRESS= // your email address
 MAIL_FROM_NAME="${APP_NAME}"
 ```
->Click [here](https://support.google.com/mail/answer/185833?hl=en) to learn how to create a signin app password for your gmail account.
+
+Install PHP dependencies:
+
+```
+composer install
+```
+
+Install NPM dependencies:
+
+```
+npm install
+```
+
+Build assets:
+
+```
+npm run build
+```
+
+Generate application key:
+
+```
+php artisan key:generate
+```
+
+Run the dev server (the output will give the address):
+
+```
+php artisan serve
+```
+
+#### That's it!
+Now you can visit `http://127.0.0.1:8000` with your browser.
+
+#### Tools used for this project
+- [Laravel](https://laravel.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [kitar/laravel-dynamodb](https://github.com/kitar/laravel-dynamodb)
+- [Ionicons](https://ionic.io/ionicons)
+- [lipis/flag-icons](https://github.com/lipis/flag-icons)
