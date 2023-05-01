@@ -189,7 +189,7 @@
                                 </li>
                                 <li class="d-block mb-3">
                                     <span class="d-block">{{ __('content.email') }}:</span>
-                                    <span class="text-white">vdredula@gmail.com</span>
+                                    <span class="text-white">{{ config('mail.from.address') }}</span>
                                 </li>
                             </ul>
                         </div>
