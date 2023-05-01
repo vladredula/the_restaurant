@@ -26,6 +26,10 @@ Route::post('password/email', [ForgotPasswordController::class, 'forgetPassword'
 Route::get('password/email/{token}', [ForgotPasswordController::class, 'resetPassword'])->name('password.reset');
 Route::post('password/confirm', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+
+Route::get('/home', function () {
+    return redirect('food');
+});
 Route::get('/food', [ItemController::class, 'food'])->name('food');
 Route::get('/drink', [ItemController::class, 'drink'])->name('drink');
 
