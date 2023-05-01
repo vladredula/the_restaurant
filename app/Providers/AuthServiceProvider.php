@@ -28,9 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         Auth::provider('dynamodb', function ($app, array $config) {
             return new AuthUserProvider(
                 $app['hash'],
-                $config['model'],
-                $config['api_token_name'] ?? null,
-                $config['api_token_index'] ?? null
+                $config['model']
             );
         });
     }
