@@ -15,7 +15,7 @@ class ItemController extends Controller
 
     public function __construct()
     {
-        // will require auth upon contruct
+        // will require auth upon construct
         $this->middleware('auth');
     }
 
