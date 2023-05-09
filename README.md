@@ -126,3 +126,6 @@ Now you can visit `http://127.0.0.1:8000` with your browser.
 - [kitar/laravel-dynamodb](https://github.com/kitar/laravel-dynamodb)
 - [Ionicons](https://ionic.io/ionicons)
 - [lipis/flag-icons](https://github.com/lipis/flag-icons)
+
+#### Deploy to Elastic Beanstalk
+On how deploy your application to elastic beanstalk, click [here](./ELASTICBEANSTALK.md)
