@@ -117,10 +117,18 @@ class ItemController extends Controller
         $resourseUrl = 'item/' . $itemType;
 
         try {
-            $response = Http::get($this->apiEndpoint . $resourseUrl);
+            $response = Http::withHeaders([
+                'authorizationToken' => env('API_AUTH_TOKEN')
+            ])->get($this->apiEndpoint . $resourseUrl);
 
             if ($response->status() != 200) {
-                throw new Exception($response->json()['message']);
+                // API gateway message variable uses "Message"
+                // others uses small letter m for "message"
+                if (isset($response->json()['Message'])) {
+                    throw new Exception($response->json()['Message']);
+                } else {
+                    throw new Exception($response->json()['message']);
+                }
             }
 
             $jsonData = $response->json();
@@ -144,13 +152,21 @@ class ItemController extends Controller
      */
     public function get_category($itemType)
     {
-        $resourseUrl = 'category/type/' . $itemType;
+        $resourseUrl = 'category/' . $itemType;
 
         try {
-            $response = Http::get($this->apiEndpoint . $resourseUrl);
+            $response = Http::withHeaders([
+                'authorizationToken' => env('API_AUTH_TOKEN')
+            ])->get($this->apiEndpoint . $resourseUrl);
 
             if ($response->status() != 200) {
-                throw new Exception($response->json()['message']);
+                // API gateway message variable uses "Message"
+                // others uses small letter m for "message"
+                if (isset($response->json()['Message'])) {
+                    throw new Exception($response->json()['Message']);
+                } else {
+                    throw new Exception($response->json()['message']);
+                }
             }
 
             $jsonData = $response->json();

@@ -30,6 +30,7 @@ Route::post('password/confirm', [ResetPasswordController::class, 'reset'])->name
 Route::get('/home', function () {
     return redirect('food');
 });
+
 Route::get('/food', [ItemController::class, 'food'])->name('food');
 Route::get('/drink', [ItemController::class, 'drink'])->name('drink');
 
