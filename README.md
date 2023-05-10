@@ -73,6 +73,10 @@ AWS_ACCESS_KEY_ID="********************"
 AWS_SECRET_ACCESS_KEY="****************************************"
 AWS_DEFAULT_REGION="ap-northeast-1" 
 ```
+For the authorization token, you can use my sample token to get past api authorization:
+```
+API_AUTH_TOKEN="therestaurantauthtoken"
+```
 
 Update the `MAIL_*` variables. You can use any email service provider that you want but in this case we will use Gmail. Generate an [app password sign in](https://support.google.com/mail/answer/185833?hl=en) for your gmail and paste to your `.env` file along with your email. 
 ```
